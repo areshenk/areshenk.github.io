@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.101.0" />
+<title>Spurious dynamics in functional brain networks | areshenkBlog</title>
+
+
+<meta property="twitter:site" content="@apreshill">
+<meta property="twitter:creator" content="@apreshill">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="">
+
+
+<meta property="og:site_name" content="areshenkBlog">
+<meta property="og:title" content="Spurious dynamics in functional brain networks | areshenkBlog">
+<meta property="og:description" content="" />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="https://areshenk.github.io/blog/spurious-structure-iii/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="https://areshenk.github.io/blog/sidebar-listing.jpg" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://areshenk.github.io/blog/sidebar-listing.jpg" >
+    
+    
+  <meta itemprop="name" content="Spurious dynamics in functional brain networks">
+<meta itemprop="description" content="Network neuroscience (NN) as a field lacks statistical and theoretical justification for almost any of it’s techniques. The discipline consists largely of ad hoc measures whose statistical properties are very poorly understood and whose relationships to brain function (if they exist at all) have not been clearly established. Much of this stems from a lack of domain knowledge – network neuroscience is a very young field – but a part of it comes from a lack of methodological rigour in general."><meta itemprop="datePublished" content="2019-05-26T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-05-26T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1293">
+<meta itemprop="keywords" content="" />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.f1b88c869e9feb00a1fe21e8f9979826ba90e026e18b274307b59fb8cfe5103c.css" integrity="sha256-8biMhp6f6wCh/iHo&#43;ZeYJrqQ4CbhiydDB7WfuM/lEDw=" media="screen">
+  
+  
+  <script src="/panelset.min.dca42702d7daf6fd31dc352efd2bcf0e4ac8c05ccaa58d9293f6177462de5d5f.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.d8c0309a9ae249291c79de33e77e8dfa4fa659967e9198392fb7cff6c392ea63.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="https://areshenk.github.io/" title="Home">
+      <img src="/img/blogophonic-mark-dark.png" class="dib db-l h2 w-auto" alt="areshenkBlog">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/blog/" title="Blog">Blog</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+<main class="page-main pa4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 ph4-l">
+      <header class="post-header">
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">Spurious dynamics in functional brain networks</h1>
+        
+        <p class="f6 measure lh-copy mv1">By Corson N. Areshenkoff</p>
+        <p class="f7 db mv0 ttu">May 26, 2019</p>
+
+      
+
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<p>Network neuroscience (NN) as a field lacks statistical and theoretical justification for almost any of it’s techniques. The discipline consists largely of ad hoc measures whose statistical properties are very poorly understood and whose relationships to brain function (if they exist at all) have not been clearly established. Much of this stems from a lack of domain knowledge – network neuroscience is a very young field – but a part of it comes from a lack of methodological rigour in general. Most techniques in NN have been imported from other fields (esp. social network analysis), and the most influential papers read like the appendix to an introductory graph theory textbook, with the authors computing every graph property they can think of with no attempt to establish the meaning of the property with respect to the brain, or even whether the property can be reliably estimated from a sample at all (i.e. the field lacks a statistical framework in general.)</p>
+<p>Dynamic networks are particularly tricky, as much of the field has been developed in the context of resting-state brain activity, where there are no exogenous variables that can be used to model the network dynamics. This has led – very broadly – to two principal approaches to the study of dynamic connectivity: 1) What I’ll call the “modeling” approach, exemplified by something like the markov switching factor models of e.g. Taghia et al. (2017), and 2) the “descriptive” approach, exemplified by authors like Bassett et al. (2011, 2013) and Betzel et al. (2013), which analyzes descriptive statistics computed from static or dynamic graphs.</p>
+<p>The construction of these graphs generally requires a large number of arbitrary preprocessing choices, and there is very little understanding of the ways in which these choices impact the resulting statistics. Much of the existing research is satisfied to compute a network measure and establish it’s significance relative to a random graph, which is usually accomplished by some form of permutation testing, since we lack: 1) a sensible null model for the absence of dynamic functional connectivity; 2) an understanding of how this null model changes under various preprocessing decisions; and 3) a null distribution for most of our network measures under (1) and (2). This is far too broad of a subject to unpack in a single post, so I’ll tackle a single, specific example.</p>
+<p>We often construct temporal networks from resting scans (or any other scan) using temporal sliding windows. Naturally, we observe changes from window to window – if, for no other reason, than because the data are noisy. We of course want to know whether this temporal structure reflects genuine changes in functional connectivity over time, or if it is explainable by noise alone. Lacking a theoretical null model, one possible approach to conducting this test is through the temporal null model of Bassett, et al. 2013 – a permutation test in which the modularity (or some other statistic) of the observed network is compared to a null distribution generated by randomly permuting the temporal order of the network slices, in order to “…probe the existence of significant temporal evolution of community structure” (p. 9)</p>
+<p>The conceptual null model here is that true dynamic functional connectivity varies smoothly over time. Shuffling the window order destroys this temporal smoothness while preserving other quantities, such as the <i>variance</i> in functional connectivity over the course of the scan. This test is thus insensitive to the overall <i>range</i> of functional connectivity, as this is preserved by temporal shuffling. This is not a failure of the test – it’s just always good to keep in mind exactly what is being tested.</p>
+<p>The problem is that several preprocessing decisions can introduce temporal smoothness into the observed network, and this test turns out to be wildly miscalibrated under these settings. I’ll focus here on two: the use of overlapping time windows, and the use of low-pass filtering on the BOLD signal (more generally, the presence of autocorrelation). The reason is fairly intuitive – both of these actions introduce sequential dependence in adjacent networks that is destroyed by time randomization. This sequential dependence creates the appearance of temporal smoothness beyond what would be expected from windows containing independent observations. This is easy to see by simulation.</p>
+<p>We construct temporal networks from uncorrelated white noise signals using a sliding window approach. Within each window, we create a weighted graph by thresholding the sample correlation matrix at zero. The community structure of the resulting temporal network is then estimated using the generalized Louvain algorithm implemented in the MATLAB toolbox provided by Lucas et al. (2011-2017). Each iteration is as follows:</p>
+<pre>
+input: num_sim = 100
+       num_roi = 100
+       num_timepoint = 300
+       window_width = 50
+       stepsize = [50 40 30 20 10]
+       smooth = [2 5 10 15]
+       n_iter = 50 
+       n_shuffle = 50
+       gamma = 1
+       omega = 1
+
+For 1:num_sim
+
+1) Generate a "num_roi" x "num_timepoint" matrix 
+   of independent, standard normal random numbers.
+
+2) Low pass filter each time series, with filter
+   parameter "smooth"
+
+3) Using a sliding window of length "window_width", 
+   moving in steps of "stepsize", calculate a 
+   sequence of sample correlation matrices.
+
+4) Set negative correlations to zero.
+
+5) For i = 1:n_iter
+   
+   5a) Construct a multilayer modularity matrix
+       with multiord(..., gamma, omega)
+
+   5b) Estimate community structure with
+       iterated_genlouvain(..., moverandw, 
+           postprocess_ordinal_multilayer)
+
+   5c) Compute network statistics
+
+6) Compute average statistic over n_iter iterations
+
+7) Repeat (5-6) for "n_shuffle" randomly shuffled
+   sequences. 
+
+8) Compute z-statistic for (6)
+</pre>
+<p>In this case, low-pass filtering is crudely done with a moving average filter of radius <code>smooth</code>. The output of (7) is used as a temporal null distribution to derive a z-statistic for the network. I’ll focus here on the modularity (Q), as it is one of the most commonly reported statistics in the literature. The resulting z-scores and type-1 error rates are shown below, plotted as a function of <code>smooth</code> and the proportion of window overlap.</p>
+<p><img src="img/fig1.png" width="100%" /></p>
+<p><img src="img/fig2.png" width="100%" /></p>
+<p>Clearly, overlapping windows result in a grossly inflated type-1 error rate, and inflated modularity in general. The effect of smoothing is less clear, and may just need a larger number of iterations for more precision, though a simple ANOVA gives evidence for some effect</p>
+<pre>
+> fit <- aov(z ~ Smooth * Overlap, data = af)
+> summary(fit)
+                Df Sum Sq Mean Sq  F value  Pr(>F)    
+Smooth           1     11      11    7.620 0.00588 ** 
+Overlap          1   4098    4098 2970.096 < 2e-16 ***
+Smooth:Overlap   1      0       0    0.295 0.58743    
+Residuals      996   1374       1                     
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+</pre>
+<p>The lesson here is that one should be very precise about the quality that is being tested (in this case, temporal smoothness), and either avoid preprocessing which introduces this quality into the data, or construct a test which is insensitive to these preprocessing decisions.</p>
+<h3>
+References
+</h3>
+<p style="margin-left: .5in; text-indent: -.5in;">
+Bassett, D. S., Porter, M. A., Wymbs, N. F., Grafton, S. T., Carlson, J. M., &amp; Mucha, P. J. (2013). Robust detection of dynamic community structure in networks. Chaos: An Interdisciplinary Journal of Nonlinear Science, 23(1), 013142.
+</p>
+<p style="margin-left: .5in; text-indent: -.5in;">
+Bassett, D. S., Wymbs, N. F., Porter, M. A., Mucha, P. J., Carlson, J. M., &amp; Grafton, S. T. (2011). Dynamic reconfiguration of human brain networks during learning. Proceedings of the National Academy of Sciences, 108(18), 7641-7646.
+</p>
+<p style="margin-left: .5in; text-indent: -.5in;">
+Betzel, R. F., Griffa, A., Avena-Koenigsberger, A., Goñi, J., Thiran, J. P., Hagmann, P., &amp; Sporns, O. (2013). Multi-scale community organization of the human structural connectome and its relationship with resting-state functional connectivity. Network Science, 1(3), 353-373.
+</p>
+<p style="margin-left: .5in; text-indent: -.5in;">
+Lucas G. S. Jeub, Marya Bazzi, Inderjit S. Jutla, and Peter J. Mucha, “A generalized Louvain method for community detection implemented in MATLAB,” <a href="http://netwiki.amath.unc.edu/GenLouvain" class="uri">http://netwiki.amath.unc.edu/GenLouvain</a> (2011-2017).
+</p>
+<p style="margin-left: .5in; text-indent: -.5in;">
+Taghia, J., Ryali, S., Chen, T., Supekar, K., Cai, W., &amp; Menon, V. (2017). Bayesian switching factor analysis for estimating time-varying functional connectivity in fMRI. NeuroImage, 155, 271-290.
+</p>
+
+        
+        <details closed class="f6 fw7 input-reset">
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Posted on:</dt>
+    <dd class="fw5 ml0">May 26, 2019</dd>
+  </dl>
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Length:</dt>
+    <dd class="fw5 ml0">7 minute read, 1293 words</dd>
+  </dl>
+  
+  
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">See Also:</dt>
+    
+  </dl>
+</details>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="https://areshenk.github.io/blog/spurious-structure-ii/">More spurious modular structure in functional brain networks &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+  </section>
+</main>
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 RStudio, Anywhere
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/areshenk" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

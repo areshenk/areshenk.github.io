@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>areshenkBlog</title>
+    <link>https://areshenk.github.io/</link>
+    <description>Recent content on areshenkBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 23 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://areshenk.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>spdm</title>
+      <link>https://areshenk.github.io/project/spdm/</link>
+      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/project/spdm/</guid>
+      <description>Symmetric, positive definite matrices in R spdm is an R package implementing operations on symmetric, positive-definite matrices (aka covariance matrices). Besides offering several forms of regularized covariance estimation, spdm is focused on geometry-respecting covariance analysis &amp;ndash; that is, operations which respect the intrinsic Riemannian manifold structure of the set of the symmetric positive-definite matrices. In my own work, these techniques are usually applied to the analysis of fMRI functional connectivity.</description>
+    </item>
+    
+    <item>
+      <title>Netlify</title>
+      <link>https://areshenk.github.io/collection/day02/01-netlify/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/collection/day02/01-netlify/</guid>
+      <description>So far, we&amp;rsquo;ve been leveraging GitHub Pages for publishing. This works great, but for blogdown we&amp;rsquo;ll start using Netlify. Let&amp;rsquo;s start RIGHT NOW with a site we&amp;rsquo;ve already built and published.
+Pre-requisites Pick either your postcards site, or your distill site from day 01. Refresh your memory- which repository was it again?</description>
+    </item>
+    
+    <item>
+      <title>A GitHub profile</title>
+      <link>https://areshenk.github.io/collection/day01/01-github/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/collection/day01/01-github/</guid>
+      <description>Profile https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/personalizing-your-profile
+Pin projects to profile https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/pinning-items-to-your-profile
+Profile README This is new! Let&amp;rsquo;s do it:
+https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme</description>
+    </item>
+    
+    <item>
+      <title>Prework</title>
+      <link>https://areshenk.github.io/collection/prework/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/collection/prework/</guid>
+      <description>Welcome to the Introducing Yourself Online workshop! We look forward to meeting you. Before attending the workshop, please complete the following prework.
+Set up RStudio Cloud Sign up for a free RStudio Cloud account at https://rstudio.cloud/ before the workshop. I recommend logging in with an existing Google or GitHub account, if you have one (rather than creating a new account with another password you have to remember). I want you to be able to work from your own laptop in this workshop, but Cloud is an important back-up plan should you run into troubles.</description>
+    </item>
+    
+    <item>
+      <title>MSMVSampEn</title>
+      <link>https://areshenk.github.io/project/msmvsampen/</link>
+      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/project/msmvsampen/</guid>
+      <description>Multiscale, multivariate sample entropy in R MSMVSampEn is an R package for computing multiscale, multivariate sample entropy using the procedure outlined by Ahmed and Mandic (2011).
+Installation MSMVSampEn is designed for efficiently computing multiscale sample entropy from highly multivariate biological signals (e.g. eeg, meg, and fMRI BOLD data). The package can be installed directly from its Github repository using
+devtools::install_git(&#39;https://github.com/areshenk-rpackages/MSMVSampEn&#39;)
+Issues Note that the interface of MSMVSampEn is likely to undergo substantial changes in the near future in order to accommodate additional features.</description>
+    </item>
+    
+    <item>
+      <title>A postcard</title>
+      <link>https://areshenk.github.io/collection/day01/02-postcards/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/collection/day01/02-postcards/</guid>
+      <description>Pre-requisites First, make sure you have the latest version of the postcards package installed from CRAN:
+install.packages(&amp;#34;postcards&amp;#34;) Restart your R session. If you use RStudio, use the menu item Session &amp;gt; Restart R or the associated keyboard shortcut:
+Ctrl + Shift + F10 (Windows and Linux) or Command + Shift + F10 (Mac OS). packageVersion(&amp;#34;postcards&amp;#34;) [1] ‘0.2.0’ Create GitHub repo Online.
+Clone GitHub repo usethis::create_from_github(&amp;#34;https://github.com/apreshill/global-postcard.git&amp;#34;) ✨ Commit &amp;amp; Push! ✨</description>
+    </item>
+    
+    <item>
+      <title>Using blogdown</title>
+      <link>https://areshenk.github.io/collection/day02/02-blogdown/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/collection/day02/02-blogdown/</guid>
+      <description>Pre-requisites First, make sure you have the latest version of the blogdown package installed from CRAN:
+install.packages(&amp;#34;blogdoown&amp;#34;) Restart your R session. If you use RStudio, use the menu item Session &amp;gt; Restart R or the associated keyboard shortcut:
+Ctrl + Shift + F10 (Windows and Linux) or Command + Shift + F10 (Mac OS). packageVersion(&amp;#34;blogdown&amp;#34;) [1] ‘1.0’ Create GitHub repo Online.
+Clone GitHub repo usethis::create_from_github(&amp;#34;https://github.com/apreshill/global-blogdown.git&amp;#34;) ✨ Commit &amp;amp; Push! ✨</description>
+    </item>
+    
+    <item>
+      <title>Motion</title>
+      <link>https://areshenk.github.io/project/motion/</link>
+      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/project/motion/</guid>
+      <description>Preprocessing, plotting, and analysis of 3D motion tracking data The project comprises three packages, which are in the (slow) process of being migrated over to Github. These first two are substantially complete, and are as follows:
+seathree: An R package implementing basic dual quaternion arithmetic. This is largely complete, but has not been extensively tested, and is not yet documented. Caveat emptor. seacurve: Includes routines for the preprocessing and basic plotting of unit dual quaternion time series; including interpolation within the space of dual quaternions, and automatic correction of discontinuities resulting from the two-to-one mapping between quaternions and rotations.</description>
+    </item>
+    
+    <item>
+      <title>A distill site</title>
+      <link>https://areshenk.github.io/collection/day01/03-distill/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/collection/day01/03-distill/</guid>
+      <description>Pre-requisites First, make sure you have the latest version of the distill package installed from CRAN:
+install.packages(&amp;quot;distill&amp;quot;) Restart your R session. If you use RStudio, use the menu item Session &amp;gt; Restart R or the associated keyboard shortcut:
+Ctrl + Shift + F10 (Windows and Linux) or Command + Shift + F10 (Mac OS). &amp;lt;!-- --&amp;gt; packageVersion(&amp;quot;distill&amp;quot;) [1] ‘1.2’ Create GitHub repo Online.
+Clone GitHub repo usethis::create_from_github(&amp;quot;https://github.com/apreshill/global-distill.git&amp;quot;) ✨ Commit &amp;amp; Push!</description>
+    </item>
+    
+    <item>
+      <title>Warm woolen mittens</title>
+      <link>https://areshenk.github.io/collection/day02/03-blogdown/</link>
+      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/collection/day02/03-blogdown/</guid>
+      <description> Hi, I&#39;m the here-bot cat! Use me to find your way in your website.
+Here I am: content/collection/day02/03-blogdown/index.md To remove me, delete this line inside that file: {{&amp;lt; here &amp;gt;}}
+My content section is: collection My layout is: single-series part 2! does this work? now for some very cool things more get ready! </description>
+    </item>
+    
+    <item>
+      <title>Spurious dynamics in functional brain networks</title>
+      <link>https://areshenk.github.io/blog/spurious-structure-iii/</link>
+      <pubDate>Sun, 26 May 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/blog/spurious-structure-iii/</guid>
+      <description>Network neuroscience (NN) as a field lacks statistical and theoretical justification for almost any of it’s techniques. The discipline consists largely of ad hoc measures whose statistical properties are very poorly understood and whose relationships to brain function (if they exist at all) have not been clearly established. Much of this stems from a lack of domain knowledge – network neuroscience is a very young field – but a part of it comes from a lack of methodological rigour in general.</description>
+    </item>
+    
+    <item>
+      <title>More spurious modular structure in functional brain networks</title>
+      <link>https://areshenk.github.io/blog/spurious-structure-ii/</link>
+      <pubDate>Wed, 16 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/blog/spurious-structure-ii/</guid>
+      <description>Even in the absence of any true underlying network structure, functional brain networks can easily show complex, modular structure, possibly due to a combination of the transitive-ish properties of most functional connectivity measures, and the standard approaches to fMRI preprocessing (esp. low pass filtering)
+Assessment of dynamic functional connectivity usually involves estimating functional connectivity within a temporal sliding window, which requires the arbitrary selection of a window size. As with low-pass filtering, a small window length reduces the precision of the functional connectivity estimate by reducing the effective sample size, which should similarly result in greater modular structure.</description>
+    </item>
+    
+    <item>
+      <title>Spurious modular structure in functional brain networks</title>
+      <link>https://areshenk.github.io/blog/spurious-structure-i/</link>
+      <pubDate>Mon, 10 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/blog/spurious-structure-i/</guid>
+      <description>EDIT (Feb 26, 2019): So it turns out I’m not the first to notice this. Jaroslav Hlinka et al. identified this problem as early as 2012. They even attribute it to the same cause: the (partial) transitivity of the sample correlation.
+The small-world properties of fMRI functional connectivity graphs obtained using standard methods have been shown to be largely reproduced or even exceeded by a matching randomly connected multivariate autoregressive process.</description>
+    </item>
+    
+    <item>
+      <title>Calibrating surprise in high dimensions</title>
+      <link>https://areshenk.github.io/blog/calibrating-surprise/</link>
+      <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/blog/calibrating-surprise/</guid>
+      <description>Most reported results in mass-univariate studies – particularly, fMRI – are, implicitly, order statistics, in the sense that they are selected out of a superset of total comparisons based on some rank ordering of effect size. Most introductory statistics courses restrict themselves to univariate toy examples, and so it’s very difficult to develop any intuition about what constitutes a “surprising” result in this setting. A sure sign that a researcher’s surprisal is miscalibrated is an implicit comparison to an incorrect null – such as in the rule of thumb that a correlation of .</description>
+    </item>
+    
+    <item>
+      <title>Cargo cult statistics</title>
+      <link>https://areshenk.github.io/blog/cargo-cult-statistics/</link>
+      <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/blog/cargo-cult-statistics/</guid>
+      <description>The failure of scientists, and particularly students in the sciences, to properly understand the most commonly used statistical concepts in their field has been extensively documented (see e.g. Sotos et al., 2007). Many of the specific misunderstandings are well known at this point to anyone with an interest in methodology – for example, Haller, et al. (2002) questioned students and faculty at several Universities and found that the overwhelming majority could not correctly define a p-value, a crisis that has launched a thousand publications.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>https://areshenk.github.io/contact/</link>
+      <pubDate>Mon, 25 Feb 2019 13:38:41 -0600</pubDate>
+      
+      <guid>https://areshenk.github.io/contact/</guid>
+      <description>** Contact page don&amp;rsquo;t contain a body, just the front matter above. See form.html in the layouts folder.
+Formspree requires a (free) account and new form to be set up. The link is made on the final published url in the field: Restrict to Domain. It is possible to register up to 2 emails free and you can select which one you want the forms to go to within Formspree in the Settings tab.</description>
+    </item>
+    
+    <item>
+      <title>Contributors</title>
+      <link>https://areshenk.github.io/contributors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/contributors/</guid>
+      <description>Thank you to all the folks who have contributed both technical and creative skills to this project:
+Desirée De Leon 🦒 (designed 5 of the custom color themes, made illustrations for the workshop, and provided general aesthetic feedback along the way)
+Garrick Aden-Buie 🧙‍♀️ (debugged headroom.js and lent his panelset.js code to the theme)
+Allison Horst 🐕 (awesome illustrations of campfires, seedlings, and evergreens, as well as my R Markdown hedgehog mascot 🦔)</description>
+    </item>
+    
+    <item>
+      <title>License</title>
+      <link>https://areshenk.github.io/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/license/</guid>
+      <description>My blog posts are released under a Creative Commons Attribution-ShareAlike 4.0 International License.</description>
+    </item>
+    
+  </channel>
+</rss>
