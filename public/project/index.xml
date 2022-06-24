@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Projects on areshenkBlog</title>
+    <link>/project/</link>
+    <description>Recent content in Projects on areshenkBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 23 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>spdm</title>
+      <link>/project/spdm/</link>
+      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/project/spdm/</guid>
+      <description>Symmetric, positive definite matrices in R spdm is an R package implementing operations on symmetric, positive-definite matrices (aka covariance matrices). Besides offering several forms of regularized covariance estimation, spdm is focused on geometry-respecting covariance analysis &amp;ndash; that is, operations which respect the intrinsic Riemannian manifold structure of the set of the symmetric positive-definite matrices. In my own work, these techniques are usually applied to the analysis of fMRI functional connectivity.</description>
+    </item>
+    
+    <item>
+      <title>MSMVSampEn</title>
+      <link>/project/msmvsampen/</link>
+      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/project/msmvsampen/</guid>
+      <description>Multiscale, multivariate sample entropy in R MSMVSampEn is an R package for computing multiscale, multivariate sample entropy using the procedure outlined by Ahmed and Mandic (2011).
+Installation MSMVSampEn is designed for efficiently computing multiscale sample entropy from highly multivariate biological signals (e.g. eeg, meg, and fMRI BOLD data). The package can be installed directly from its Github repository using
+devtools::install_git(&#39;https://github.com/areshenk-rpackages/MSMVSampEn&#39;)
+Issues Note that the interface of MSMVSampEn is likely to undergo substantial changes in the near future in order to accommodate additional features.</description>
+    </item>
+    
+    <item>
+      <title>Motion</title>
+      <link>/project/motion/</link>
+      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/project/motion/</guid>
+      <description>Preprocessing, plotting, and analysis of 3D motion tracking data The project comprises three packages, which are in the (slow) process of being migrated over to Github. These first two are substantially complete, and are as follows:
+seathree: An R package implementing basic dual quaternion arithmetic. This is largely complete, but has not been extensively tested, and is not yet documented. Caveat emptor. seacurve: Includes routines for the preprocessing and basic plotting of unit dual quaternion time series; including interpolation within the space of dual quaternions, and automatic correction of discontinuities resulting from the two-to-one mapping between quaternions and rotations.</description>
+    </item>
+    
+  </channel>
+</rss>
