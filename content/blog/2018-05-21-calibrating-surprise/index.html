@@ -1,0 +1,88 @@
+---
+title: Calibrating surprise in high dimensions
+author: Corson N. Areshenkoff
+date: '2018-05-21'
+slug: calibrating-surprise
+categories: []
+tags: []
+description: ''
+weight: 20
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Most reported results in mass-univariate studies – particularly, fMRI – are, implicitly, order statistics, in the sense that they are selected out of a superset of total comparisons based on some rank ordering of effect size. Most introductory statistics courses restrict themselves to univariate toy examples, and so it’s very difficult to develop any intuition about what constitutes a “surprising” result in this setting. A sure sign that a researcher’s surprisal is miscalibrated is an implicit comparison to an incorrect null – such as in the rule of thumb that a correlation of .5 is “large”.</p>
+<p>In a typical mass-univariate setting, we observe a large number of effects – generally treated as if they are independent – and sift out the largest by significance testing, or some other threshold on effect size. The interpretation of the resulting “significant” effects is complicated by the fact that most intuition for what constitutes a “surprising” or “large” effect is developed in the univariate setting, and implicitly (or explicitly, in the case of significance testing) references a baseline of “no effect”, while the filtering over large numbers of effects actually implies a different null model.</p>
+<p>Let’s be explicit. Consider a realistic setting in neuroimaging, where we measure pairwise structural connectivity (say, by DTI tractography) between a large number of brain regions. We then want to identify which (if any) connections are correlated with performance on some cognitive task. Searching over all pairs of regions, we find a significant connection which has a correlation of <span class="math inline">\(r = .5\)</span> with task performance, which is commonly called a “strong” correlation in the social sciences. Is this correlation surprising? Is it actually evidence of anything?</p>
+<p>A typical cortical atlas might easily contain upwards of 100 distinct regions, giving upwards of <span class="math inline">\({100\choose 2} = 4950\)</span> total pairwise connections. What is the strongest correlation we can expect to find in these data? We can actually compute this explicitly given a few assumptions – specifically, that task performance and connection strength are jointly normal for each connection, and that the set of connections are independent (which is slightly more realistic for structural than for functional connectivity).</p>
+<p>Suppose that that the true correlation is zero. For a pair of jointly normal, uncorrelated random variables, the sample correlation has density
+<span class="math display">\[
+        f(r) = \frac{1}{B(\frac{1}{2}, \frac{1}{2}(n-2))} (1-r^2)^{\frac{1}{2}(n-4)}
+    \]</span></p>
+<pre class="r"><code>dcor &lt;- function(r, n) {
+    (1-r^2)^((n-4)/2) / beta(1/2, (n-2)/2)
+}</code></pre>
+<p>where <span class="math inline">\(n\)</span> is the sample size and <span class="math inline">\(B\)</span> is the beta function. The cumulative distribution function is then
+<span class="math display">\[\begin{align*}
+        F(r) &amp;= \frac{1}{B(\frac{1}{2}, \frac{1}{2}(n-2))} 
+           \int_{-1}^r (1-s^2)^{\frac{1}{2}(n-4)} ds \\
+             &amp;= \frac{1}{B(\frac{1}{2}, \frac{1}{2}(n-2))} 
+                \left ( s _1F_2(\frac{1}{2}, -\frac{1}{2}(n-4);\frac{3}{2},r^2)\right ) 
+                \Bigg |_{-1}^r
+    \end{align*}\]</span></p>
+<pre class="r"><code>library(hypergeo)
+pcor &lt;- function(r, n) {
+  const &lt;- 1/beta(1/2, (n-2)/2)
+  upper &lt;- Re(r*hypergeo(1/2, -(n-4)/2, 3/2, r^2))
+  lower &lt;- Re(-hypergeo(1/2, -(n-4)/2, 3/2, (-1)^2))
+  return(const * (upper - lower))
+}</code></pre>
+<p>where <span class="math inline">\(_1F_2\)</span> is the hypergeometric function (note the the hypergeometric function is difficult to evaluate, and hypergeo in particular has difficulty with large sample sizes)</p>
+<p>It’s easy to work out the distribution for the maximum order statistics. Given <span class="math inline">\(k\)</span> independent correlations, the CDF of the maximum is
+<span class="math display">\[
+  F_\text{max}(r) = F^k(r)
+\]</span></p>
+<pre class="r"><code>pmaxcor &lt;- function(r, n, k) {
+  pcor(r, n)^k
+}</code></pre>
+<p>and the density is
+<span class="math display">\[
+  f_\text{max}(r) = kF^{k-1}(r)f(r)
+\]</span></p>
+<pre class="r"><code>dmaxcor &lt;- function(r, n, k) {
+  k * pcor(r, n)^(k-1) * dcor(r, n)
+}</code></pre>
+<p>According to Turner et al. (2018), the median sample size of an fMRI study published in 2015 was about 28, which we’ll round to 30 for demonstration. For these study parameters</p>
+<pre class="r"><code>n &lt;- 30
+k &lt;- choose(100,2)</code></pre>
+<p>the distribution of the maximum observed correlation is</p>
+<pre class="r"><code>r &lt;- seq(-1, 1, .001)
+plot(r, dmaxcor(r, n, k), type = &#39;l&#39;, 
+     lwd = 2, cex.lab = 1.4, yaxt = &#39;n&#39;,
+     xlab = &#39;Correlation&#39;, ylab = &#39;&#39;)
+abline(v = 0, lty = 2)</code></pre>
+<p><img src="img/unnamed-chunk-6-1.png" width="672" /></p>
+<p>So we will essentially always observe a “strong” correlation (<span class="math inline">\(r \geq .5\)</span>) in this setting. In fact, this happens with probability</p>
+<pre class="r"><code>1 - pmaxcor(.5, n, k)</code></pre>
+<pre><code>## [1] 0.9999947</code></pre>
+<p>when there are no true correlations anywhere. So a “strong” correlation is not only not surprising, it is completely consistent with the idea that there are no effects. Worse, even if there <i>are</i> strong effects, they are intermingled with the effects that can be expected from pure noise.</p>
+<p>How large does our sample need to be resolve a large correlation from pure noise? Let’s accept a false positive rate of <span class="math inline">\(\alpha = .05\)</span> for a two-tailed probability.</p>
+<pre class="r"><code>n     &lt;- seq(10,80,1)
+alpha &lt;- .05
+p     &lt;- 1 - pmaxcor(.5, n, k)
+plot(n, p, xlab = &#39;Sample Size&#39;,
+     ylab = &#39;False positive rate&#39;,
+     type = &#39;l&#39;, lwd = 2, cex.lab = 1.25)
+abline(h = alpha/2, col = &#39;red&#39;)</code></pre>
+<p><img src="img/unnamed-chunk-8-1.png" width="672" /></p>
+<p>So the minimum sample size needed to resolve even a large correlation from noise is</p>
+<pre class="r"><code>n[which.max(p &lt;= alpha/2)]</code></pre>
+<pre><code>## [1] 71</code></pre>
+<p>which is more than twice the median sample size reported in the literature, and is not economically feasible for most labs, given the huge expense involved in running an imaging study. Taking the position that large true correlations between imaging data and behavior rarely, if ever, exist – the alternative being that a substantial proportion of the variance in noisy behavioral measurements can be explained by crude, noisy, and indirect summaries of brain structure or function, which seems implausible – this would suggest that almost all mass-univariate, correlation based imaging studies are dead out of the gate, excluding perhaps large, multi-lab collaborations.</p>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p style="margin-left: .5in; text-indent: -.5in;">
+Turner, B. O., Paul, E. J., Miller, M. B., &amp; Barbey, A. K. (2018). Small sample sizes reduce the replicability of task-based fMRI studies. Communications biology, 1(1), 62.
+</p>
+</div>
