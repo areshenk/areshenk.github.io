@@ -1,0 +1,34 @@
+---
+date: "2022-06-22"
+excerpt: In this block, we'll use the postcards package to make a single 'about' home
+  page with only R Markdown.
+subtitle: Write and send a single postcard.
+title: Covariance in one dimension
+weight: 1
+---
+
+```{r opts, echo = FALSE}
+knitr::opts_chunk$set(
+  fig.path = "img/"
+)
+```
+
+## Covariance in a single dimension
+
+In this and the following posts, we'll return repeatedly to the case of a univariate random variable, in which case the covariance reduces to the ordinary variance. This will let us test out computations in a simple setting, and will also provide good intuition. In particular, many of the differentio-geometric properties of the covariance have simple interpretations in the one-dimensional case, which are helpful for building intuition for some of the concepts we'll be discussing without digging too deep into the mathematical concepts themselves.
+
+For now, we'll be a bit loose and, for example, ignore the distinction between the variance of a sample and a distribution. We recall the sample variance
+$$ s^2 = \frac{1}{n}\sum_i (x_i - \bar{x}) $$
+where $n$ is the sample size and $\bar{x}$ is the sample mean. We're not going to bother with whether we divide by $n$ or $n-1$ -- the only thing we care about is the observation that the variance is the *average squared distance from the mean*, which provides good enough intuition for why the calculation gives us a measure of spread.
+
+Note that it follows immediately that $s^2$ must be greater than or equal to zero, and is zero exactly when all observations are equal to the mean (that is, when the sample is constant). This is a degenerate case, and we'll almost always assume that the variance is positive, but keep this boundary case in mind. In fact, we'll take this a little bit further and *identify* the variance with the non-negative real numbers $[0, \infty)$. Think of this as the "space" of variances.
+
+### Three views on the variance
+
+We already know that the variance can be seen as a measure of the spread of a sample or distribution. Here are two other perspectives that will be useful to us:
+
+#### Variance as a transformation
+
+It is a basic property of the variance that for any random variable $x$ with variance $s^2$, and any real number $a \geq 0$, then $ax$ has variance $a^2s^2$. In other words, variances scale quadratically. We can take a perspective on this that will be useful later: Every variance $s^2$ has an associated value $s$ (the square root, or the standard deviation in this case, but forget about that) that transforms (by multiplication) a random variable with variance $1$ to have variance $s^2$. As a particular useful example: Suppose we want to transform a random variable $x$ with variance $s_1^2$ to one with variance $s_2^2$. First, we can "whiten" $x$ by applying $(s_1^2)^{-\frac{1}{2}}x = \frac{1}{s_1}x$ to achieve a unit variance, and then apply $(s_2)(s_1^2)^{-\frac{1}{2}}x = \frac{s_2}{s_1}x$ to get a variance of $s_2^2$.
+
+

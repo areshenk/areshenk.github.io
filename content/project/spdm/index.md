@@ -13,6 +13,10 @@ weight: 1
 
 ## Symmetric, positive definite matrices in R
 
+<p align="center">
+  <a href="https://github.com/areshenk-rpackages/spdm"><img src="giticon.png" alt="Github" style="width:64px;height:64px;"></a>
+</p>
+
 ---
 
 **spdm** is an R package implementing operations on symmetric, positive-definite matrices (aka covariance matrices). Besides offering several forms of regularized covariance estimation, **spdm** is focused on geometry-respecting covariance analysis -- that is, operations which respect the intrinsic Riemannian manifold structure of the set of the symmetric positive-definite matrices. In my own work, these techniques are usually applied to the analysis of fMRI functional connectivity.

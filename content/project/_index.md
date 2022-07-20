@@ -8,9 +8,9 @@ cascade:
     show_sidebar_adunit: true
     text_link_label: View all projects
     text_link_url: /project/
-description: List of current projects
+description: 
 layout: list-grid
-show_author_byline: true
+show_author_byline: false
 show_button_links: false
 show_post_date: false
 show_post_thumbnail: true

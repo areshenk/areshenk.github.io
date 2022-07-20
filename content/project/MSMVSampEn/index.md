@@ -13,6 +13,10 @@ weight: 2
 
 ## Multiscale, multivariate sample entropy in R
 
+<p align="center">
+  <a href="https://github.com/areshenk-rpackages/MSMVSampEn"><img src="giticon.png" alt="Github" style="width:64px;height:64px;"></a>
+</p>
+
 ---
 
 **MSMVSampEn** is an R package for computing multiscale, multivariate sample entropy using the procedure outlined by Ahmed and Mandic (2011).
