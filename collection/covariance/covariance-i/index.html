@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.101.0" />
+<title>Covariance I: Basic geometric and algebraic properties | areshenkBlog</title>
+
+
+<meta property="twitter:site" content="@apreshill">
+<meta property="twitter:creator" content="@apreshill">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="">
+
+
+<meta property="og:site_name" content="areshenkBlog">
+<meta property="og:title" content="Covariance I: Basic geometric and algebraic properties | areshenkBlog">
+<meta property="og:description" content="" />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="https://areshenk.github.io/collection/covariance/covariance-i/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="https://areshenk.github.io/img/papillons.jpg" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="https://areshenk.github.io/img/papillons.jpg" >
+    
+  <meta itemprop="name" content="Covariance I: Basic geometric and algebraic properties">
+<meta itemprop="description" content="Covariance in a single dimension In this and the following posts, we’ll return repeatedly to the case of a univariate random variable, in which case the covariance reduces to the ordinary variance. This will let us test out computations in a simple setting, and will also provide good intuition. In particular, many of the differentio-geometric properties of the covariance have simple interpretations in the one-dimensional case, which are helpful for building intuition for some of the concepts we’ll be discussing without digging too deep into the mathematical concepts themselves."><meta itemprop="datePublished" content="2021-12-17T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-12-17T00:00:00+00:00" />
+<meta itemprop="wordCount" content="441">
+<meta itemprop="keywords" content="" />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.f1b88c869e9feb00a1fe21e8f9979826ba90e026e18b274307b59fb8cfe5103c.css" integrity="sha256-8biMhp6f6wCh/iHo&#43;ZeYJrqQ4CbhiydDB7WfuM/lEDw=" media="screen">
+  
+  
+  <script src="/panelset.min.dca42702d7daf6fd31dc352efd2bcf0e4ac8c05ccaa58d9293f6177462de5d5f.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.d8c0309a9ae249291c79de33e77e8dfa4fa659967e9198392fb7cff6c392ea63.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single-series">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="https://areshenk.github.io/" title="Home">
+      <img src="/img/blogophonic-mark-dark.png" class="dib db-l h2 w-auto" alt="areshenkBlog">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/blog/" title="Blog">Blog</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<main class="page-main ph4 pt4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 pr3-l">
+      <header class="post-header">
+        <h4 class="breadcrumb pb5">
+
+  
+    
+      
+  
+    
+      
+  
+    
+      
+  
+
+    
+    
+      <a href="/collection/">Guides and documentation</a>
+    
+  
+
+    
+    
+      <a href="/collection/covariance/">Day 01</a>
+    
+  
+
+    
+    
+      Covariance I: Basic geometric and algebraic properties
+    
+  
+
+</h4>
+
+
+
+
+        
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">Covariance I: Basic geometric and algebraic properties</h1>
+        
+        
+        
+        
+        
+      
+        
+      </header>
+      <section class="post-body pt5 pb4">
+        
+<script src="https://areshenk.github.io/collection/covariance/covariance-i/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="covariance-in-a-single-dimension" class="section level2">
+<h2>Covariance in a single dimension</h2>
+<p>In this and the following posts, we’ll return repeatedly to the case of a univariate random variable, in which case the covariance reduces to the ordinary variance. This will let us test out computations in a simple setting, and will also provide good intuition. In particular, many of the differentio-geometric properties of the covariance have simple interpretations in the one-dimensional case, which are helpful for building intuition for some of the concepts we’ll be discussing without digging too deep into the mathematical concepts themselves.</p>
+<p>For now, we’ll be a bit loose and, for example, ignore the distinction between the variance of a sample and a distribution. We recall the sample variance
+<span class="math display">\[ s^2 = \frac{1}{n}\sum_i (x_i - \bar{x}) \]</span>
+where <span class="math inline">\(n\)</span> is the sample size and <span class="math inline">\(\bar{x}\)</span> is the sample mean. We’re not going to bother with whether we divide by <span class="math inline">\(n\)</span> or <span class="math inline">\(n-1\)</span> – the only thing we care about is the observation that the variance is the <em>average squared distance from the mean</em>, which provides good enough intuition for why the calculation gives us a measure of spread.</p>
+<p>Note that it follows immediately that <span class="math inline">\(s^2\)</span> must be greater than or equal to zero, and is zero exactly when all observations are equal to the mean (that is, when the sample is constant). This is a degenerate case, and we’ll almost always assume that the variance is positive, but keep this boundary case in mind. In fact, we’ll take this a little bit further and <em>identify</em> the variance with the non-negative real numbers <span class="math inline">\([0, \infty)\)</span>. Think of this as the “space” of variances.</p>
+<div id="three-views-on-the-variance" class="section level3">
+<h3>Three views on the variance</h3>
+<p>We already know that the variance can be seen as a measure of the spread of a sample or distribution. Here are two other perspectives that will be useful to us:</p>
+<div id="variance-as-a-transformation" class="section level4">
+<h4>Variance as a transformation</h4>
+<p>It is a basic property of the variance that for any random variable <span class="math inline">\(x\)</span> with variance <span class="math inline">\(s^2\)</span>, and any real number <span class="math inline">\(a \geq 0\)</span>, then <span class="math inline">\(ax\)</span> has variance <span class="math inline">\(a^2s^2\)</span>. In other words, variances scale quadratically. We can take a perspective on this that will be useful later: Every variance <span class="math inline">\(s^2\)</span> has an associated value <span class="math inline">\(s\)</span> (the square root, or the standard deviation in this case, but forget about that) that transforms (by multiplication) a random variable with variance <span class="math inline">\(1\)</span> to have variance <span class="math inline">\(s^2\)</span>. As a particular useful example: Suppose we want to transform a random variable <span class="math inline">\(x\)</span> with variance <span class="math inline">\(s_1^2\)</span> to one with variance <span class="math inline">\(s_2^2\)</span>. First, we can “whiten” <span class="math inline">\(x\)</span> by applying <span class="math inline">\((s_1^2)^{-\frac{1}{2}}x = \frac{1}{s_1}x\)</span> to achieve a unit variance, and then apply <span class="math inline">\((s_2)(s_1^2)^{-\frac{1}{2}}x = \frac{s_2}{s_1}x\)</span> to get a variance of <span class="math inline">\(s_2^2\)</span>.</p>
+</div>
+</div>
+</div>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="https://areshenk.github.io/collection/covariance/03-distill/">&larr; A distill site</a>
+  
+  
+  
+</div>
+
+      </footer>
+    </article>
+    
+  </section>
+</main>
+
+<aside class="page-sidebar" role="complementary">
+                         
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <img src="/collection/featured-sidebar.jpg" class="db ma0">
+
+                         
+ 
+
+
+
+<div class="flex items-start sticky ph4 pb4 flex-row">
+  <div class="w-two-thirds w-50-l ph0">
+    <h2 class="mv3 f5 fw7 ttu tracked">
+      <a class="no-underline dim" href="/collection/">Outline</a></h2>
+    <nav id="SectionTableOfContents" aria-label="SectionTableOfContents">
+        <ul>
+        
+          
+          
+          <li class="" hugo-nav="/collection/prework/">
+            <a href="https://areshenk.github.io/collection/prework/">Prework</a></li>
+          
+          </li>
+        
+          
+          
+          
+          <details open class="active">
+            <summary class="active" hugo-nav="/collection/covariance/"><a href="https://areshenk.github.io/collection/covariance/">Day 01</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/covariance/02-postcards/"><a href="https://areshenk.github.io/collection/covariance/02-postcards/">A postcard</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/covariance/03-distill/"><a href="https://areshenk.github.io/collection/covariance/03-distill/">A distill site</a></li>
+            
+              
+              <li class="active" hugo-nav="/collection/covariance/covariance-i/"><a href="https://areshenk.github.io/collection/covariance/covariance-i/">Covariance I: Basic geometric and algebraic properties</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/collection/day02/"><a href="https://areshenk.github.io/collection/day02/">Day 02</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/day02/01-netlify/"><a href="https://areshenk.github.io/collection/day02/01-netlify/">Netlify</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/day02/02-blogdown/"><a href="https://areshenk.github.io/collection/day02/02-blogdown/">Using blogdown</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/day02/03-blogdown/"><a href="https://areshenk.github.io/collection/day02/03-blogdown/">Warm woolen mittens</a></li>
+            
+          </details>
+          
+          </li>
+        
+        </ul>
+    </nav>
+  </div>
+  <details id="PageTableOfContents">
+    <summary><h2 class="mv0 f5 fw7 ttu tracked dib">On this page<h2></summary>
+    <div class="pl2 pr0 mh0">
+    
+    </div>
+  </details>
+  
+</div>
+
+</aside>
+
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 RStudio, Anywhere
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/areshenk" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

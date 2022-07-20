@@ -28,15 +28,5 @@ devtools::install_git(&#39;https://github.com/areshenk-rpackages/MSMVSampEn&#39;
 Issues Note that the interface of MSMVSampEn is likely to undergo substantial changes in the near future in order to accommodate additional features.</description>
     </item>
     
-    <item>
-      <title>Motion</title>
-      <link>https://areshenk.github.io/project/motion/</link>
-      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://areshenk.github.io/project/motion/</guid>
-      <description>Preprocessing, plotting, and analysis of 3D motion tracking data The project comprises three packages, which are in the (slow) process of being migrated over to Github. These first two are substantially complete, and are as follows:
-seathree: An R package implementing basic dual quaternion arithmetic. This is largely complete, but has not been extensively tested, and is not yet documented. Caveat emptor. seacurve: Includes routines for the preprocessing and basic plotting of unit dual quaternion time series; including interpolation within the space of dual quaternions, and automatic correction of discontinuities resulting from the two-to-one mapping between quaternions and rotations.</description>
-    </item>
-    
   </channel>
 </rss>

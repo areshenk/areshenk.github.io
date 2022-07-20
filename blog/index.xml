@@ -37,6 +37,16 @@ The small-world properties of fMRI functional connectivity graphs obtained using
     </item>
     
     <item>
+      <title>In a room sit three textbooks...</title>
+      <link>https://areshenk.github.io/blog/in-a-room-sit-three-textbooks/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/blog/in-a-room-sit-three-textbooks/</guid>
+      <description>I’ve argued before that poor statistics education in the sciences is a major contributing factor to scientists’ general lack of understanding of basic statistical concepts. I’m not so much interested in factual inaccuracies, which are inevitable, as the material has to be presented to a largely non-technical audience, but instead with how textbooks go about handling the translation of statistical concepts to a non-technical audience.
+Most results in statistics, even very basic ones, have extremely precise statements that require a rigorous understanding of concepts like a random variable or a density function, which usually have mathematical backgrounds beyond the scope of statistics courses in the sciences.</description>
+    </item>
+    
+    <item>
       <title>Calibrating surprise in high dimensions</title>
       <link>https://areshenk.github.io/blog/calibrating-surprise/</link>
       <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>

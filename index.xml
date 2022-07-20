@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Covariance in one dimension</title>
+      <link>https://areshenk.github.io/collection/covariance/01-motivation/</link>
+      <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/collection/covariance/01-motivation/</guid>
+      <description>Covariance in a single dimension In this and the following posts, we’ll return repeatedly to the case of a univariate random variable, in which case the covariance reduces to the ordinary variance. This will let us test out computations in a simple setting, and will also provide good intuition. In particular, many of the differentio-geometric properties of the covariance have simple interpretations in the one-dimensional case, which are helpful for building intuition for some of the concepts we’ll be discussing without digging too deep into the mathematical concepts themselves.</description>
+    </item>
+    
+    <item>
       <title>Netlify</title>
       <link>https://areshenk.github.io/collection/day02/01-netlify/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
@@ -24,18 +33,6 @@
       <guid>https://areshenk.github.io/collection/day02/01-netlify/</guid>
       <description>So far, we&amp;rsquo;ve been leveraging GitHub Pages for publishing. This works great, but for blogdown we&amp;rsquo;ll start using Netlify. Let&amp;rsquo;s start RIGHT NOW with a site we&amp;rsquo;ve already built and published.
 Pre-requisites Pick either your postcards site, or your distill site from day 01. Refresh your memory- which repository was it again?</description>
-    </item>
-    
-    <item>
-      <title>A GitHub profile</title>
-      <link>https://areshenk.github.io/collection/day01/01-github/</link>
-      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://areshenk.github.io/collection/day01/01-github/</guid>
-      <description>Profile https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/personalizing-your-profile
-Pin projects to profile https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/pinning-items-to-your-profile
-Profile README This is new! Let&amp;rsquo;s do it:
-https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme</description>
     </item>
     
     <item>
@@ -62,10 +59,10 @@ Issues Note that the interface of MSMVSampEn is likely to undergo substantial ch
     
     <item>
       <title>A postcard</title>
-      <link>https://areshenk.github.io/collection/day01/02-postcards/</link>
+      <link>https://areshenk.github.io/collection/covariance/02-postcards/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://areshenk.github.io/collection/day01/02-postcards/</guid>
+      <guid>https://areshenk.github.io/collection/covariance/02-postcards/</guid>
       <description>Pre-requisites First, make sure you have the latest version of the postcards package installed from CRAN:
 install.packages(&amp;#34;postcards&amp;#34;) Restart your R session. If you use RStudio, use the menu item Session &amp;gt; Restart R or the associated keyboard shortcut:
 Ctrl + Shift + F10 (Windows and Linux) or Command + Shift + F10 (Mac OS). packageVersion(&amp;#34;postcards&amp;#34;) [1] ‘0.2.0’ Create GitHub repo Online.
@@ -85,21 +82,11 @@ Clone GitHub repo usethis::create_from_github(&amp;#34;https://github.com/apresh
     </item>
     
     <item>
-      <title>Motion</title>
-      <link>https://areshenk.github.io/project/motion/</link>
-      <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://areshenk.github.io/project/motion/</guid>
-      <description>Preprocessing, plotting, and analysis of 3D motion tracking data The project comprises three packages, which are in the (slow) process of being migrated over to Github. These first two are substantially complete, and are as follows:
-seathree: An R package implementing basic dual quaternion arithmetic. This is largely complete, but has not been extensively tested, and is not yet documented. Caveat emptor. seacurve: Includes routines for the preprocessing and basic plotting of unit dual quaternion time series; including interpolation within the space of dual quaternions, and automatic correction of discontinuities resulting from the two-to-one mapping between quaternions and rotations.</description>
-    </item>
-    
-    <item>
       <title>A distill site</title>
-      <link>https://areshenk.github.io/collection/day01/03-distill/</link>
+      <link>https://areshenk.github.io/collection/covariance/03-distill/</link>
       <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://areshenk.github.io/collection/day01/03-distill/</guid>
+      <guid>https://areshenk.github.io/collection/covariance/03-distill/</guid>
       <description>Pre-requisites First, make sure you have the latest version of the distill package installed from CRAN:
 install.packages(&amp;quot;distill&amp;quot;) Restart your R session. If you use RStudio, use the menu item Session &amp;gt; Restart R or the associated keyboard shortcut:
 Ctrl + Shift + F10 (Windows and Linux) or Command + Shift + F10 (Mac OS). &amp;lt;!-- --&amp;gt; packageVersion(&amp;quot;distill&amp;quot;) [1] ‘1.2’ Create GitHub repo Online.
@@ -144,6 +131,16 @@ Assessment of dynamic functional connectivity usually involves estimating functi
       <guid>https://areshenk.github.io/blog/spurious-structure-i/</guid>
       <description>EDIT (Feb 26, 2019): So it turns out I’m not the first to notice this. Jaroslav Hlinka et al. identified this problem as early as 2012. They even attribute it to the same cause: the (partial) transitivity of the sample correlation.
 The small-world properties of fMRI functional connectivity graphs obtained using standard methods have been shown to be largely reproduced or even exceeded by a matching randomly connected multivariate autoregressive process.</description>
+    </item>
+    
+    <item>
+      <title>In a room sit three textbooks...</title>
+      <link>https://areshenk.github.io/blog/in-a-room-sit-three-textbooks/</link>
+      <pubDate>Sun, 09 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/blog/in-a-room-sit-three-textbooks/</guid>
+      <description>I’ve argued before that poor statistics education in the sciences is a major contributing factor to scientists’ general lack of understanding of basic statistical concepts. I’m not so much interested in factual inaccuracies, which are inevitable, as the material has to be presented to a largely non-technical audience, but instead with how textbooks go about handling the translation of statistical concepts to a non-technical audience.
+Most results in statistics, even very basic ones, have extremely precise statements that require a rigorous understanding of concepts like a random variable or a density function, which usually have mathematical backgrounds beyond the scope of statistics courses in the sciences.</description>
     </item>
     
     <item>
