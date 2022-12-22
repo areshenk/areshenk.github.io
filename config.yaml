@@ -80,6 +80,10 @@ menu:
       title: Project Portfolio
       url: /project/
       weight: 3
+    - name: Guides
+      title: Guides
+      url: /collection/
+      weight: 4
 privacy:
   disqus:
     disable: no

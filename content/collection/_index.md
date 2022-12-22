@@ -1,12 +1,10 @@
 ---
-author: Alison Hill
+author: Corson N. Areshenkoff
 cascade:
   layout: single-series
   sidebar:
-    author: Alison Hill
-    description: "Sometimes you want a souped-up series- a bundle of related pages
-      \nmeant to be read in sequence. This section is like a blog series, \nminus
-      the blog.\n"
+    author: Corson N. Areshenkoff
+    description: "Assorted guides, manuals, and multipart series.\n"
     show_author_byline: true
     show_post_date: true
     show_sidebar_adunit: true
@@ -15,8 +13,7 @@ cascade:
     text_link_url: ""
     text_series_label: Outline
     title: Guides and documentation
-description: "Sometimes you want a souped-up series- a bundle of related pages \nmeant
-  to be read in sequence. This section is like a blog series, \nminus the blog.\n"
+description: "Assorted guides, manuals, and multipart series.\n"
 layout: list-sidebar
 show_author_byline: false
 show_post_date: false

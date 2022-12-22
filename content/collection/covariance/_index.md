@@ -2,16 +2,16 @@
 author: Corson N. Areshenkoff
 date: "2022-06-22"
 description: |
-  Our first day together is all about building and publishing.
+  A primer on the structure of covariance matrices.
 excerpt: null
 layout: single-series
 publishDate: "2022-06-22"
 show_author_byline: false
 show_post_date: false
 show_post_thumbnail: true
-subtitle: All about Day 01 of 'Introduce Yourself Online'.
-title: Motivation
-weight: 1
+subtitle: A primer on the structure of covariance matrices
+title: Covariance
+weight: 2
 ---
 
-If you choose `layout: single-series`, you can add markdown text here and it will be the landing page for this nested subsection.
+A series of short articles on the meaning and properties of covariance, with a focus on the algebraic and geometric properties of high-dimensional covariance matrices. The goal is to give some basic intuition for the cone of symmetric, positive-definite matrices, which is the proper setting for the statistical analysis of covariance matrix valued data.
