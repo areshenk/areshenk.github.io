@@ -54,7 +54,7 @@ params:
       url: https://github.com/areshenk
   socialInFooter: yes
   socialInHeader: no
-  theme: sky
+  theme: readable
   twitter: apreshill
   utterances:
     issue_term: pathname
