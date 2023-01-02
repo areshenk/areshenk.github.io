@@ -63,8 +63,8 @@ For 1:num_sim
 8) Compute z-statistic for (6)
 </pre>
 <p>In this case, low-pass filtering is crudely done with a moving average filter of radius <code>smooth</code>. The output of (7) is used as a temporal null distribution to derive a z-statistic for the network. I’ll focus here on the modularity (Q), as it is one of the most commonly reported statistics in the literature. The resulting z-scores and type-1 error rates are shown below, plotted as a function of <code>smooth</code> and the proportion of window overlap.</p>
-<p><img src="img/fig1.png" width="100%" /></p>
-<p><img src="img/fig2.png" width="100%" /></p>
+<p><img src="img/fig1.png" width="70%" /></p>
+<p><img src="img/fig2.png" width="70%" /></p>
 <p>Clearly, overlapping windows result in a grossly inflated type-1 error rate, and inflated modularity in general. The effect of smoothing is less clear, and may just need a larger number of iterations for more precision, though a simple ANOVA gives evidence for some effect</p>
 <pre>
 > fit <- aov(z ~ Smooth * Overlap, data = af)

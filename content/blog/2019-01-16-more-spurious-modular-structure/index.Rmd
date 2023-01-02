@@ -25,13 +25,13 @@ This time, we'll use real fMRI data consisting of an atlas of 175 regions record
 
 <a href="http://areshenk-research-notes.com/spurious-structure-in-functional-brain-networks/">As we know</a>, t-tests for correlations are wildly miscalibrated when applied to fMRI time series, and this problem is especially severe at short window lengths. Take the figure below, which shows a pair of signals (left) and the distribution of pairwise sample correlations (right) at each window length. 
 
-```{r echo=FALSE, out.width='100%'}
+```{r echo=FALSE, out.width='70%'}
 knitr::include_graphics('img/fig1.png')
 ```
 
 Notice the increased prevalence of extreme correlations at smaller window lengths -- the result of the near linearity of the signals within the window. For all the reasons discussed in the previous post, we would expect this to result in increased modular structure at shorter window lengths. Sure enough, short window lengths result in extremely modular, efficient, small-world networks, even in the absence of any real underlying network structure.
 
-```{r echo=FALSE, out.width='100%'}
+```{r echo=FALSE, out.width='70%'}
 knitr::include_graphics('img/fig2.png')
 ```
 
