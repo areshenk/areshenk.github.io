@@ -1,0 +1,21 @@
+---
+title: 'More spurious modular structure in functional brain networks'
+author: Corson N. Areshenkoff
+date: '2019-01-16'
+slug: spurious-structure-II
+categories: []
+tags: []
+description: ''
+weight: 20
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Even in the absence of any true underlying network structure, functional brain networks <a href="http://areshenk-research-notes.com/spurious-structure-in-functional-brain-networks/">can easily show complex, modular structure</a>, possibly due to a combination of the transitive-ish properties of most functional connectivity measures, and the standard approaches to fMRI preprocessing (esp. low pass filtering)</p>
+<p>Assessment of <i>dynamic</i> functional connectivity usually involves estimating functional connectivity within a temporal sliding window, which requires the arbitrary selection of a window size. As with low-pass filtering, a small window length reduces the precision of the functional connectivity estimate by reducing the effective sample size, which should similarly result in greater modular structure.</p>
+<p>This time, we’ll use real fMRI data consisting of an atlas of 175 regions recorded for a duration of 150 TRs. To ensure that there is no true underlying modular structure, I’ve randomly selected each of the 175 signals from different ROIs from different subjects during different scans (resting state vs. various tasks), and reversed half of the signals in time. We then construct correlation networks at window lengths of 10, 25, 50, 100, and 150 TRs by thresholding the sample correlation matrix at positive significant values using a t-test with an uncorrected threshold of <span class="math inline">\(\alpha = .05\)</span>.</p>
+<p><a href="http://areshenk-research-notes.com/spurious-structure-in-functional-brain-networks/">As we know</a>, t-tests for correlations are wildly miscalibrated when applied to fMRI time series, and this problem is especially severe at short window lengths. Take the figure below, which shows a pair of signals (left) and the distribution of pairwise sample correlations (right) at each window length.</p>
+<p><img src="img/fig1.png" width="70%" /></p>
+<p>Notice the increased prevalence of extreme correlations at smaller window lengths – the result of the near linearity of the signals within the window. For all the reasons discussed in the previous post, we would expect this to result in increased modular structure at shorter window lengths. Sure enough, short window lengths result in extremely modular, efficient, small-world networks, even in the absence of any real underlying network structure.</p>
+<p><img src="img/fig2.png" width="70%" /></p>
