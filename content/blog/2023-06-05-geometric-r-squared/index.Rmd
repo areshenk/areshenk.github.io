@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Nothing that I discuss here is particularly deep, or new. In fact, this way of interpreting $R^2$ is needlessly convoluted, but it provides a relatively simple and intuitive introduction to some concepts that require much more sophisticated mathematical machinery in dimensions greater than one. It also provides a fairly intuitive -- and, most importantly, visualizeable -- example of some constructions used in more
+Note that nothing that I discuss here is particularly deep, or new. In fact, this way of interpreting $R^2$ is needlessly convoluted, but it provides a relatively simple and intuitive introduction to some concepts that require much more sophisticated mathematical machinery in dimensions greater than one. It also provides a fairly intuitive -- and, most importantly, visualizeable -- example of some constructions used in more sophisticated applications.
 
 Given two vectors $X$ and $Y$, the angle $\theta$ between them is given by
 
@@ -47,16 +47,28 @@ Notice (obviously) that the correlation is a *signed* measure -- it cares whethe
 knitr::include_graphics('img/correlation-angle.png')
 ```
 
-```{r echo=FALSE, out.width='30%', out.extra='style="float:left; padding:10px"'}
-knitr::include_graphics('img/subspace-angle.png')
-```
-
-```{r echo=FALSE, out.width='30%', out.extra='style="float:right; padding:10px"'}
-knitr::include_graphics('img/correlation-distance.png')
-```
+Note that $R^2$ has two principal interpretations, which are equivalent for linear models: (1) It is the proportion of variance explained by the model; and (2) it is the squared correlation between the actual and predicted outcomes. It is the second interpretation which we will focus on here.
 
 ```{r echo=FALSE, out.width='30%', out.extra='style="float:left; padding:10px"'}
 knitr::include_graphics('img/coangles.png')
 ```
 
+The distance between the two subspaces on the circle is the *smallest* of the two angles (seen in blue on the left). If this angle is $\theta$ -- corresponding to a correlation of $r = \cos{\theta}$ -- then the complementary (longer; in red) angle is $\pi - \theta$. But this just corresponds to a correlation of $\cos{(\pi - \theta)} = -\cos{\theta} = -r$. Hence, the squared correlation is indifferent to this selection -- it is simply the squared geodesic distance between the subspaces spanned by the two vectors $X$ and $Y$. The distance itself it, of course, simply the absolute value of the correlation.
 
+This metaphor is fun. Let's run with it.
+
+What about multiple regression? $R^2$ has the same interpretation here -- the squared correlation between the actual and predicted response, but here the predicted response is not simply a translation and scaling of a single predictor, so the $R^2$ says nothing about the direct relationship between the outcome $Y$ and the predictors $(X_1,X_2, ..., X_n)$. In this case, we can appeal to a geometric interpretation of multiple regression: The least-squares predictions are the (orthogonal) projection of the dependent variable onto the subspace spanned by the predictors. In that case $R^2$ is the (squared) distance between the subspace spanned by the response, and the subspace spanned by its projection onto the subspace spanned by the predictors (i.e. the nearest subspace contained in the span of the predictors).
+
+Note that this construction is utterly indifferent to even perfect multicolinearity: Computing $R^2$ in this way requires only the response, and its projection onto the subspace spanned by the predictors. As such, it does not care about the *coefficients* (which are not uniquely defined when the predictors are linearly dependent), or even the actual predictions themselves, only about the *ability* of the predictors to approximate the response.
+
+### Multivariate regression
+
+This interpretation of $R^2$ suggests a straightforward extension to the multivariate case. Here, we have the following data: A matrix of outcomes $\bf{Y}$, whose columns span some subspace $\text{Sp}(\bf{Y})$, and a matrix of predicted values $\bf{\bar{Y}}$, whose columns span some subspace $\text{Sp}(\bf{\bar{Y}})$. As an analogy with the univariate case, in which we considered the distance between one-dimensional subspaces (lines), what can we say about the distance between $\text{Sp}(\bf{Y})$ and $\text{Sp}(\bf{\bar{Y}})$, which may be higher dimensional subspaces (e.g. planes)?
+
+There is a straightforward, principled way of doing this when the subspaces are of equal dimension, but that's not always (or even often) the case. For example, the dimension of $\text{Sp}(\bf{\bar{Y}})$ is bounded by the number of predictors (where we consider the intercept to be its own predictor), and so, when the number of predictors is smaller than the number of response variables, we will necessarily find ourselves in this position unless the response variables are linearly dependent. 
+
+Ignore that issue for now, and we'll just consider the case where $\text{Sp}(\bf{Y})$ and $\text{Sp}(\bf{\bar{Y}})$ are equal. For example, suppose that we have two response variables (so that $\text{Sp}(\bf{Y})$ is a plane), and enough predictors
+
+::: {#hello .greeting .message style="color: red;"}
+Hello **world**!
+:::
