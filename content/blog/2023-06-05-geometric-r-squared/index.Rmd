@@ -43,9 +43,20 @@ Notice (obviously) that the correlation is a *signed* measure -- it cares whethe
 
 (2) An example which sounds contrived in this setting, but which I am currently dealing with in the context of Human neuroimaging data: Suppose that we have conducted principal component analysis on two sets of data, and have retained only the dominant component in each case. How consistent are the results of the two analyses? *Directly* comparing the components is tricky, because the sign of the component is arbitrary (multiplying both the loading and component scores by $-1$ changes nothing about the results). We thus want some kind of measure of similarity that doesn't distinguish between the components pointing in the same or in the opposite directions.
 
-### (1) The coefficient of determination
+```{r echo=FALSE, out.width='90%'}
+knitr::include_graphics('img/correlation-angle.png')
+```
 
-### (2) Similar subspaces
+```{r echo=FALSE, out.width='30%', out.extra='style="float:left; padding:10px"'}
+knitr::include_graphics('img/subspace-angle.png')
+```
 
+```{r echo=FALSE, out.width='30%', out.extra='style="float:right; padding:10px"'}
+knitr::include_graphics('img/correlation-distance.png')
+```
+
+```{r echo=FALSE, out.width='30%', out.extra='style="float:left; padding:10px"'}
+knitr::include_graphics('img/coangles.png')
+```
 
 
