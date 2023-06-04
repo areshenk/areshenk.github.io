@@ -8,7 +8,7 @@ cascade:
     show_sidebar_adunit: true
     text_link_label: View all projects
     text_link_url: /project/
-description: 
+description: I generally make an effort to bundle code that I often reuse into an R package.
 layout: list-grid
 show_author_byline: false
 show_button_links: false

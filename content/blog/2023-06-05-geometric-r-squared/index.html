@@ -1,0 +1,39 @@
+---
+title: A (differential) geometric interpretation of the coefficient of determination
+author: Corson N. Areshenkoff
+date: '2023-06-05'
+slug: geometric-rsquared
+categories: []
+tags: []
+description: ''
+weight: 20
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>Nothing that I discuss here is particularly deep, or new. In fact, this way of interpreting <span class="math inline">\(R^2\)</span> is needlessly convoluted, but it provides a relatively simple and intuitive introduction to some concepts that require much more sophisticated mathematical machinery in dimensions greater than one. It also provides a fairly intuitive – and, most importantly, visualizeable – example of some constructions used in more</p>
+<p>Given two vectors <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the angle <span class="math inline">\(\theta\)</span> between them is given by</p>
+<p><span class="math display">\[ \theta = \text{acos} \left ( \frac{X \cdot Y}{\|X\|\|Y\|} \right ).\]</span></p>
+<p>The cosine of this angle is often used as a measure of similarity (appropriately named “cosine similarity”), and has the convenient property of being bounded between <span class="math inline">\(1\)</span> and <span class="math inline">\(-1\)</span>, denoting vectors which point in the same or opposite directions, respectively. Note that this expression can be written in the slightly more familiar form</p>
+<p><span class="math display">\[ \cos{\theta} = \left ( \frac{\sum_i x_iy_i}
+  {\sqrt{\sum_ix_i^2} \sqrt{\sum_iy_i^2}} \right ).\]</span></p>
+<p>Consider now the Pearson correlation between two centered vectors (the centering makes no difference except to make the algebra slightly easier):</p>
+<p><span class="math display">\[\begin{align}
+  r_{XY} &amp;= \frac{\sigma_{XY}}{\sigma_X \sigma_Y} \\
+         &amp;= \frac{\sum_i{x_iy_i}}
+         {\sqrt{\sum_i x^2}\sqrt{\sum_i y^2}} \\
+         &amp;= \cos{\theta},
+\end{align}\]</span></p>
+<p>which provides a well known and convenient geometric interpretation of the correlation: Given two (centered) vectors <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the correlation between them is the cosine of the angle between them. When they point in the same direction, the correlation is high; when the point in opposite directions, the correlation is negative; and when they point at a right angle, the correlation is zero.</p>
+<p>Notice (obviously) that the correlation is a <em>signed</em> measure – it cares whether <span class="math inline">\(X\)</span> points in the <em>same</em> or in the <em>opposite</em> direction of <span class="math inline">\(Y\)</span>; but there are cases in which we do not care about this distinction. Here are two examples, which lead to different notions of similarity which turn out to be fundamentally related:</p>
+<ol style="list-style-type: decimal">
+<li><p>A researcher is interested in <em>predicting</em> Y using X – say, with a simple linear regression model. The fundamental concern is thus the <em>strength</em> of the relationship, rather than its specific sign. This is often summarized using the coefficient of determination, which has several equivalent interpretations which we will discuss shortly.</p></li>
+<li><p>An example which sounds contrived in this setting, but which I am currently dealing with in the context of Human neuroimaging data: Suppose that we have conducted principal component analysis on two sets of data, and have retained only the dominant component in each case. How consistent are the results of the two analyses? <em>Directly</em> comparing the components is tricky, because the sign of the component is arbitrary (multiplying both the loading and component scores by <span class="math inline">\(-1\)</span> changes nothing about the results). We thus want some kind of measure of similarity that doesn’t distinguish between the components pointing in the same or in the opposite directions.</p></li>
+</ol>
+<div id="the-coefficient-of-determination" class="section level3">
+<h3>(1) The coefficient of determination</h3>
+</div>
+<div id="similar-subspaces" class="section level3">
+<h3>(2) Similar subspaces</h3>
+</div>
