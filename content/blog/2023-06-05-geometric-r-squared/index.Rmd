@@ -7,6 +7,7 @@ categories: []
 tags: []
 description: ''
 weight: 20
+css: envblocks.css
 ---
 
 ```{r opts, echo = FALSE}
@@ -53,22 +54,36 @@ Note that $R^2$ has two principal interpretations, which are equivalent for line
 knitr::include_graphics('img/coangles.png')
 ```
 
-The distance between the two subspaces on the circle is the *smallest* of the two angles (seen in blue on the left). If this angle is $\theta$ -- corresponding to a correlation of $r = \cos{\theta}$ -- then the complementary (longer; in red) angle is $\pi - \theta$. But this just corresponds to a correlation of $\cos{(\pi - \theta)} = -\cos{\theta} = -r$. Hence, the squared correlation is indifferent to this selection -- it is simply the squared geodesic distance between the subspaces spanned by the two vectors $X$ and $Y$. The distance itself it, of course, simply the absolute value of the correlation.
+The distance between the two subspaces on the circle is the *smallest* of the two angles (seen in blue on the left). If this angle is $\theta$ -- corresponding to a correlation of $r = \cos{\theta}$ -- then the complementary (longer; in red) angle is $\pi - \theta$. But this just corresponds to a correlation of $\cos{(\pi - \theta)} = -\cos{\theta} = -r$. Hence, the squared correlation is indifferent to this selection -- it is simply the squared geodesic distance between the subspaces spanned by the two vectors $X$ and $Y$. The distance itself is, of course, simply the absolute value of the correlation.
 
 This metaphor is fun. Let's run with it.
 
 What about multiple regression? $R^2$ has the same interpretation here -- the squared correlation between the actual and predicted response, but here the predicted response is not simply a translation and scaling of a single predictor, so the $R^2$ says nothing about the direct relationship between the outcome $Y$ and the predictors $(X_1,X_2, ..., X_n)$. In this case, we can appeal to a geometric interpretation of multiple regression: The least-squares predictions are the (orthogonal) projection of the dependent variable onto the subspace spanned by the predictors. In that case $R^2$ is the (squared) distance between the subspace spanned by the response, and the subspace spanned by its projection onto the subspace spanned by the predictors (i.e. the nearest subspace contained in the span of the predictors).
 
-Note that this construction is utterly indifferent to even perfect multicolinearity: Computing $R^2$ in this way requires only the response, and its projection onto the subspace spanned by the predictors. As such, it does not care about the *coefficients* (which are not uniquely defined when the predictors are linearly dependent), or even the actual predictions themselves, only about the *ability* of the predictors to approximate the response.
+Note that this construction is utterly indifferent to even perfect multicolinearity: Computing $R^2$ in this way requires only the response, and its projection onto the subspace spanned by the predictors. As such, it does not care about the *coefficients* (which are not uniquely defined when the predictors are linearly dependent).
 
 ### Multivariate regression
 
-This interpretation of $R^2$ suggests a straightforward extension to the multivariate case. Here, we have the following data: A matrix of outcomes $\bf{Y}$, whose columns span some subspace $\text{Sp}(\bf{Y})$, and a matrix of predicted values $\bf{\bar{Y}}$, whose columns span some subspace $\text{Sp}(\bf{\bar{Y}})$. As an analogy with the univariate case, in which we considered the distance between one-dimensional subspaces (lines), what can we say about the distance between $\text{Sp}(\bf{Y})$ and $\text{Sp}(\bf{\bar{Y}})$, which may be higher dimensional subspaces (e.g. planes)?
+This interpretation of $R^2$ suggests a straightforward extension to the multivariate case. Here, we have the following data: A matrix of outcomes $\bf{Y}$, whose columns span some subspace $\text{Sp}(\bf{Y})$, and a matrix of predicted values $\bf{\hat{Y}}$, whose columns span some subspace $\text{Sp}(\bf{\hat{Y}})$. As an analogy with the univariate case, in which we considered the distance between one-dimensional subspaces (lines), what can we say about the distance between $\text{Sp}(\bf{Y})$ and $\text{Sp}(\bf{\hat{Y}})$, which may be higher dimensional subspaces (e.g. planes)?
 
-There is a straightforward, principled way of doing this when the subspaces are of equal dimension, but that's not always (or even often) the case. For example, the dimension of $\text{Sp}(\bf{\bar{Y}})$ is bounded by the number of predictors (where we consider the intercept to be its own predictor), and so, when the number of predictors is smaller than the number of response variables, we will necessarily find ourselves in this position unless the response variables are linearly dependent. 
+There is a straightforward, principled way of doing this when the subspaces are of equal dimension, but that's not always (or even often) the case. For example, the dimension of $\text{Sp}(\bf{\hat{Y}})$ is bounded by the number of predictors (where we consider the intercept to be its own predictor), and so, when the number of predictors is smaller than the number of response variables, we will necessarily find ourselves in this position unless the response variables are linearly dependent. 
 
-Ignore that issue for now, and we'll just consider the case where $\text{Sp}(\bf{Y})$ and $\text{Sp}(\bf{\bar{Y}})$ are equal. For example, suppose that we have two response variables (so that $\text{Sp}(\bf{Y})$ is a plane), and enough predictors
+Ignore that issue for now, and we'll just consider the case where $\text{Sp}(\bf{Y})$ and $\text{Sp}(\bf{\hat{Y}})$ are equal. For example, suppose that we have two response variables (so that $\text{Sp}(\bf{Y})$ is a plane), and enough predictors
 
-::: {#hello .greeting .message style="color: red;"}
-Hello **world**!
+:::: {.definition-p data-label="Principal angle"}
+The purpose of principal angles is to quantify the similarity between two subspaces, such as two planes through the origin. For those unfamiliar with the concept, here is an almost rigorous definition: 
+
+(1) Given two k-dimensional subspaces $X$ and $Y$, pick two vectors $x_1$ and $y_1$ in each respective subspace which have the smallest possible angle between them. Call this angle $\theta_1$.
+
+(2) Now, find another pair of vectors $x_2$ and $y_2$ with the smallest possible angle between them, subject to the constraint that $x_2$ is orthogonal to $x_1$, and similarly for $y$. Call this $\theta_2$.
+
+(3) Repeat $k$ times.
+
+The result is an increasing sequence of *principal angles* (PAs). Note that if the two subspaces intersect, then at least one principal angle must be zero, since we can then take the same vector in each subspace. More generally, the number of zero principal angles is equal to the dimension of the intersection. Given two distinct planes through the origin, whose intersection must be a line, we will then have one zero PA and another giving the angle at which one plane is tilted relative to another. Note also that in the one-dimensional case, the principal angle reduces to the angle between two lines.
+
+Note that this construction works perfectly well for subspaces of unequal dimension. If $X$ is $k$-dimensional and $Y$ is $l$-dimensional, then we can extract $\text{min}(k,l)$ principal angles.
+:::
+
+:::: {.definition-p data-label="butt"}
+Yaas
 :::
