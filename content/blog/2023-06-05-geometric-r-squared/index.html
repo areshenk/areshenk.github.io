@@ -10,6 +10,7 @@ weight: 20
 css: envblocks.css
 ---
 
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
   <link rel="stylesheet" href="envblocks.css" type="text/css" />
 
 
@@ -17,8 +18,8 @@ css: envblocks.css
 <p>Given two vectors <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>, the angle <span class="math inline">\(\theta\)</span> between them is given by</p>
 <p><span class="math display">\[ \theta = \text{acos} \left ( \frac{X \cdot Y}{\|X\|\|Y\|} \right ).\]</span></p>
 <p>The cosine of this angle is often used as a measure of similarity (appropriately named “cosine similarity”), and has the convenient property of being bounded between <span class="math inline">\(1\)</span> and <span class="math inline">\(-1\)</span>, denoting vectors which point in the same or opposite directions, respectively. Note that this expression can be written in the slightly more familiar form</p>
-<p><span class="math display">\[ \cos{\theta} = \left ( \frac{\sum_i x_iy_i}
-  {\sqrt{\sum_ix_i^2} \sqrt{\sum_iy_i^2}} \right ).\]</span></p>
+<p><span class="math display">\[ \cos{\theta} =  \frac{\sum_i x_iy_i}
+  {\sqrt{\sum_ix_i^2} \sqrt{\sum_iy_i^2}} .\]</span></p>
 <p>Consider now the Pearson correlation between two centered vectors (the centering makes no difference except to make the algebra slightly easier):</p>
 <p><span class="math display">\[\begin{align}
   r_{XY} &amp;= \frac{\sigma_{XY}}{\sigma_X \sigma_Y} \\
@@ -42,8 +43,7 @@ css: envblocks.css
 <div id="multivariate-regression" class="section level3">
 <h3>Multivariate regression</h3>
 <p>This interpretation of <span class="math inline">\(R^2\)</span> suggests a straightforward extension to the multivariate case. Here, we have the following data: A matrix of outcomes <span class="math inline">\(\bf{Y}\)</span>, whose columns span some subspace <span class="math inline">\(\text{Sp}(\bf{Y})\)</span>, and a matrix of predicted values <span class="math inline">\(\bf{\hat{Y}}\)</span>, whose columns span some subspace <span class="math inline">\(\text{Sp}(\bf{\hat{Y}})\)</span>. As an analogy with the univariate case, in which we considered the distance between one-dimensional subspaces (lines), what can we say about the distance between <span class="math inline">\(\text{Sp}(\bf{Y})\)</span> and <span class="math inline">\(\text{Sp}(\bf{\hat{Y}})\)</span>, which may be higher dimensional subspaces (e.g. planes)?</p>
-<p>There is a straightforward, principled way of doing this when the subspaces are of equal dimension, but that’s not always (or even often) the case. For example, the dimension of <span class="math inline">\(\text{Sp}(\bf{\hat{Y}})\)</span> is bounded by the number of predictors (where we consider the intercept to be its own predictor), and so, when the number of predictors is smaller than the number of response variables, we will necessarily find ourselves in this position unless the response variables are linearly dependent.</p>
-<p>Ignore that issue for now, and we’ll just consider the case where <span class="math inline">\(\text{Sp}(\bf{Y})\)</span> and <span class="math inline">\(\text{Sp}(\bf{\hat{Y}})\)</span> are equal. For example, suppose that we have two response variables (so that <span class="math inline">\(\text{Sp}(\bf{Y})\)</span> is a plane), and enough predictors</p>
+<p>There is a straightforward, principled way of doing this when the subspaces are of equal dimension, but that’s not always (or even often) the case. Nevertheless, it’s still useful tp</p>
 <div class="definition-p" data-label="Principal angle">
 <p>The purpose of principal angles is to quantify the similarity between two subspaces, such as two planes through the origin. For those unfamiliar with the concept, here is an almost rigorous definition:</p>
 <ol style="list-style-type: decimal">
@@ -53,8 +53,10 @@ css: envblocks.css
 </ol>
 <p>The result is an increasing sequence of <em>principal angles</em> (PAs). Note that if the two subspaces intersect, then at least one principal angle must be zero, since we can then take the same vector in each subspace. More generally, the number of zero principal angles is equal to the dimension of the intersection. Given two distinct planes through the origin, whose intersection must be a line, we will then have one zero PA and another giving the angle at which one plane is tilted relative to another. Note also that in the one-dimensional case, the principal angle reduces to the angle between two lines.</p>
 <p>Note that this construction works perfectly well for subspaces of unequal dimension. If <span class="math inline">\(X\)</span> is <span class="math inline">\(k\)</span>-dimensional and <span class="math inline">\(Y\)</span> is <span class="math inline">\(l\)</span>-dimensional, then we can extract <span class="math inline">\(\text{min}(k,l)\)</span> principal angles.</p>
-</div>
-<div class="definition-p" data-label="butt">
-<p>Yaas</p>
+<p>To compute these angles, let <span class="math inline">\(\bf{U}\)</span> and <span class="math inline">\(\bf{V}\)</span> be matrices whose columns are orthonormal bases for <span class="math inline">\(\text{Sp}(X)\)</span> and <span class="math inline">\(\text{Sp}(Y)\)</span>, respectively. Then we have</p>
+<p><span class="math display">\[\begin{equation}
+\cos{\theta_i} = \sigma_i(U^{\top}V)
+\end{equation}\]</span>
+where <span class="math inline">\(\sigma_i\)</span> denotes the <span class="math inline">\(i\)</span>’th singular value.</p>
 </div>
 </div>

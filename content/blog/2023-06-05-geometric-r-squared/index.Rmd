@@ -24,8 +24,8 @@ $$ \theta = \text{acos} \left ( \frac{X \cdot Y}{\|X\|\|Y\|} \right ).$$
 
 The cosine of this angle is often used as a measure of similarity (appropriately named "cosine similarity"), and has the convenient property of being bounded between $1$ and $-1$, denoting vectors which point in the same or opposite directions, respectively. Note that this expression can be written in the slightly more familiar form 
 
-$$ \cos{\theta} = \left ( \frac{\sum_i x_iy_i}
-  {\sqrt{\sum_ix_i^2} \sqrt{\sum_iy_i^2}} \right ).$$
+$$ \cos{\theta} =  \frac{\sum_i x_iy_i}
+  {\sqrt{\sum_ix_i^2} \sqrt{\sum_iy_i^2}} .$$
   
 Consider now the Pearson correlation between two centered vectors (the centering makes no difference except to make the algebra slightly easier):
 
@@ -66,9 +66,7 @@ Note that this construction is utterly indifferent to even perfect multicolinear
 
 This interpretation of $R^2$ suggests a straightforward extension to the multivariate case. Here, we have the following data: A matrix of outcomes $\bf{Y}$, whose columns span some subspace $\text{Sp}(\bf{Y})$, and a matrix of predicted values $\bf{\hat{Y}}$, whose columns span some subspace $\text{Sp}(\bf{\hat{Y}})$. As an analogy with the univariate case, in which we considered the distance between one-dimensional subspaces (lines), what can we say about the distance between $\text{Sp}(\bf{Y})$ and $\text{Sp}(\bf{\hat{Y}})$, which may be higher dimensional subspaces (e.g. planes)?
 
-There is a straightforward, principled way of doing this when the subspaces are of equal dimension, but that's not always (or even often) the case. For example, the dimension of $\text{Sp}(\bf{\hat{Y}})$ is bounded by the number of predictors (where we consider the intercept to be its own predictor), and so, when the number of predictors is smaller than the number of response variables, we will necessarily find ourselves in this position unless the response variables are linearly dependent. 
-
-Ignore that issue for now, and we'll just consider the case where $\text{Sp}(\bf{Y})$ and $\text{Sp}(\bf{\hat{Y}})$ are equal. For example, suppose that we have two response variables (so that $\text{Sp}(\bf{Y})$ is a plane), and enough predictors
+There is a straightforward, principled way of doing this when the subspaces are of equal dimension, but that's not always (or even often) the case. Nevertheless, it's still useful tp 
 
 :::: {.definition-p data-label="Principal angle"}
 The purpose of principal angles is to quantify the similarity between two subspaces, such as two planes through the origin. For those unfamiliar with the concept, here is an almost rigorous definition: 
@@ -82,8 +80,13 @@ The purpose of principal angles is to quantify the similarity between two subspa
 The result is an increasing sequence of *principal angles* (PAs). Note that if the two subspaces intersect, then at least one principal angle must be zero, since we can then take the same vector in each subspace. More generally, the number of zero principal angles is equal to the dimension of the intersection. Given two distinct planes through the origin, whose intersection must be a line, we will then have one zero PA and another giving the angle at which one plane is tilted relative to another. Note also that in the one-dimensional case, the principal angle reduces to the angle between two lines.
 
 Note that this construction works perfectly well for subspaces of unequal dimension. If $X$ is $k$-dimensional and $Y$ is $l$-dimensional, then we can extract $\text{min}(k,l)$ principal angles.
-:::
 
-:::: {.definition-p data-label="butt"}
-Yaas
+To compute these angles, let $\bf{U}$ and $\bf{V}$ be matrices whose columns are orthonormal bases for $\text{Sp}(X)$ and $\text{Sp}(Y)$, respectively. Then we have 
+
+\begin{equation}
+\cos{\theta_i} = \sigma_i(U^{\top}V)
+\end{equation}
+where $\sigma_i$ denotes the $i$'th singular value.
+
+
 :::
