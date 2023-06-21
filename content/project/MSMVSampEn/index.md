@@ -1,7 +1,7 @@
 ---
 date: "2022-06-23"
 draft: false
-excerpt: MSMVSampEn is an R package for computing multiscale, multivariate sample entropy of biological signals
+excerpt: R package for computing multiscale, multivariate sample entropy of biological signals
 layout: single
 title: MSMVSampEn
 weight: 2

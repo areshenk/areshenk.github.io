@@ -1,10 +1,10 @@
 ---
 date: "2022-06-23"
 draft: false
-excerpt: sbsp is an R package implementing routines for the analysis of linear subspaces, such as those obtained by principal component analysis. Formally, it is designed for the analysis of data lying on the Grassmann manifold G(k,n) of k-dimentional subspaces of n-dimentional Euclidean space.
+excerpt: R package implementing routines for the analysis of linear subspaces, such as those obtained by principal component analysis. Formally, it is designed for the analysis of data lying on the Grassmann manifold G(k,n) of k-dimentional subspaces of n-dimentional Euclidean space.
 layout: single
 title: sbsp
-weight: 1
+weight: 4
 ---
 
 <p align="center">

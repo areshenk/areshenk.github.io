@@ -1,7 +1,7 @@
 ---
 date: "2022-06-23"
 draft: false
-excerpt: spdm is an R package implementing routines for the analysis of symmetric, positive-definite matrices (i.e. covariance matrices). It implements several forms of regularized estimation, means, and distance functions, as well as Riemannian operations allowing for e.g. the centering of fMRI functional connectivity data by parallel transport.
+excerpt: R package for the analysis of symmetric, positive-definite matrices (i.e. covariance matrices). Implements several forms of regularized estimation, means, and distance functions, as well as Riemannian operations allowing for e.g. the centering of fMRI functional connectivity data by parallel transport.
 layout: single
 title: spdm
 weight: 1

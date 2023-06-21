@@ -1,7 +1,7 @@
 ---
 date: "2022-12-21"
 draft: false
-excerpt: glass is an R package for plotting cortical, cerebellar, and striatal surface maps.
+excerpt: R package for plotting cortical, cerebellar, and striatal surface maps.
 layout: single
 title: glass
 weight: 3
