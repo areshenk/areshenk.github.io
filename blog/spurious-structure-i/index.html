@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.101.0" />
+<meta name="generator" content="Hugo 0.108.0">
 <title>Spurious modular structure in functional brain networks | areshenkBlog</title>
 
 
@@ -56,13 +56,13 @@ The small-world properties of fMRI functional connectivity graphs obtained using
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
   
   
-  <link rel="stylesheet" href="/style.main.min.f1b88c869e9feb00a1fe21e8f9979826ba90e026e18b274307b59fb8cfe5103c.css" integrity="sha256-8biMhp6f6wCh/iHo&#43;ZeYJrqQ4CbhiydDB7WfuM/lEDw=" media="screen">
+  <link rel="stylesheet" href="/style.main.min.977927cc9fbb8267905a51fc736bee04a98f0fee4d68d13a30997d8aeb6967de.css" integrity="sha256-l3knzJ&#43;7gmeQWlH8c2vuBKmPD&#43;5NaNE6MJl9iutpZ94=" media="screen">
   
   
-  <script src="/panelset.min.dca42702d7daf6fd31dc352efd2bcf0e4ac8c05ccaa58d9293f6177462de5d5f.js" type="text/javascript"></script>
+  <script src="/panelset.min.ed1ac24b6e16f4e2481e3d1d098ae66f5bc77438aef619e6e266d8ac5b00dc72.js" type="text/javascript"></script>
   
   
-  <script src="/main.min.bc37fdb0cb9ebdd5718a2d4c6892a4041fec76f8f7974d6790d6c2c096d753f5.js" type="text/javascript"></script>
+  <script src="/main.min.e567f7e8ac7c79035da4f709e5d53dd1f0ab375425524ad1e9d79dd672a9678b.js" type="text/javascript"></script>
 </head>
 <body>
       <div class="grid-container">
@@ -81,6 +81,11 @@ The small-world properties of fMRI functional connectivity graphs obtained using
         
         
         
+      <a class="link f6 f5-l dib pv1 ph2 " href="/research/" title="Research">Research</a>
+      
+        
+        
+        
       <a class="link f6 f5-l dib pv1 ph2 active" href="/blog/" title="Blog">Blog</a>
       
         
@@ -88,13 +93,18 @@ The small-world properties of fMRI functional connectivity graphs obtained using
         
       <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
       
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/areshenk_cv.pdf" title="CV">CV</a>
+      
       
     </div>
   </nav>
 </header>
 
 <main class="page-main pa4" role="main">
-  <section class="page-content mw7 center">
+  <section class="page-content mw8 center">
     <article class="post-content pa0 ph4-l">
       <header class="post-header">
         <h1 class="f1 lh-solid measure-narrow mb3 fw4">Spurious modular structure in functional brain networks</h1>
@@ -105,8 +115,9 @@ The small-world properties of fMRI functional connectivity graphs obtained using
       
 
       </header>
-      <section class="post-body pt5 pb4">
+      <section class="post-body pt5 pb4 f5">
         
+<script src="https://areshenk.github.io/blog/spurious-structure-i/index_files/header-attrs/header-attrs.js"></script>
 
 
 <p><strong>EDIT (Feb 26, 2019):</strong> So it turns out I’m not the first to notice this. Jaroslav Hlinka et al. identified this problem as early as 2012. They even attribute it to the same cause: the (partial) transitivity of the sample correlation.</p>
@@ -132,22 +143,22 @@ Hlinka, J., Hartman, D., Jajcay, N., Tomeček, D., Tintěra, J., &amp; Paluš, M
 <p>Here’s the tricky part: What we <i>meant</i> by our null model is a network in which there are no true relationships between brain regions. What we <i>actually specified</i> was a random graph. The problem is that the two are not the same – standard approaches to preprocessing fMRI data and constructing functional networks can <i>introduce</i> spurious structure into the graph, even when the underlying signals are independent.</p>
 <p>Let’s simulate some data: We’ll generate 250 datasets consisting of <span class="math inline">\(N = 150\)</span> white noise signals of length <span class="math inline">\(T = 100\)</span>. FMRI data are typically low pass filtered, and functional connectivity analyses are usually carried out in frequency ranges roughly between .025 Hz and .15 Hz, so we’ll low-pass filter the data with a cutoff between .025 Hz and .175 Hz, in steps of .025. For each of these cutoffs, we’ll construct graphs by thresholding the matrices of pairwise correlations between signals.</p>
 <p>What kind of structure can we expect to see, keeping in mind that our signals are pure, uncorrelated white noise? To start with, let’s get a sense of what the correlations actually look like. For each filter cutoff, I’ve plotted the distribution of the Pearson correlation coefficient below:</p>
-<p><img src="img/fig1.png" width="100%" /></p>
+<p><img src="img/fig1.png" width="70%" /></p>
 <p>Notice the increased variance and, ultimately, clustering at the boundaries, at lower frequencies. This is completely intuitive: consider the limiting case, when the smoothing is so severe that the signals are essentially linear over their recorded length. In that case, any two either increase/decrease together (a perfect correlation); one increases while another decreases (perfect anti-correlation); or one or both of the signals are zero (zero correlation). So the correlation is effectively binarized in the limit.</p>
 <p>As a digression, this has practical consequences for researchers who misuse significance tests. What is a “significant” correlation? Using a standard t-test, the test statistic for a correlation <span class="math inline">\(r\)</span> is
 <span class="math display">\[ t = r \sqrt{\frac{n-2}{1-r^2}} \]</span>
 which has a <span class="math inline">\(t_{n-2}\)</span> distribution under the null hypothesis of zero correlation under the assumption that the <span class="math inline">\(n\)</span> observations are independent and bivariate normal. But smoothing (or low-pass filtering in general) introduces autocorrelation, which makes larger correlations more common, which inflates the false positive rate of the test. See below for the error rate for a significance threshold of <span class="math inline">\(\alpha = .05\)</span>:</p>
-<p><img src="img/fig2.png" width="100%" /></p>
+<p><img src="img/fig2.png" width="70%" /></p>
 <p>So for a filter cutoff of .175 Hz (in the ballpark of commonly used cutoffs in the fMRI literature), a t-test with a nominal type I error rate of .05 has an actual error rate of over .2 – over four times higher. See Lazic (2010) for other examples of scientists not understanding dependence.</p>
 <p>This clustering towards the boundaries actually has interesting implications for the structure of thresholded correlation networks. Now, correlation is not transitive in general – if <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are positively correlated, and <span class="math inline">\(Y\)</span> and <span class="math inline">\(Z\)</span> are positively correlated, it is not necessarily the case that <span class="math inline">\(X\)</span> and <span class="math inline">\(Z\)</span> are also positively correlated. But there’s a limit – because covariance is an inner-product, a little linear algebra gives us
 <span class="math display">\[ r_{XZ} \geq r_{XY}r_{YZ} - \sqrt{1-r_{XY}^2}\sqrt{1-r_{YZ}^2}. \]</span>
 If both <span class="math inline">\(r_{XY}\)</span> and <span class="math inline">\(r_{YZ}\)</span> are at least <span class="math inline">\(\theta\)</span>, then this implies <span class="math inline">\(r_{XZ} \geq 2\theta^2-1\)</span>. In other words, <i>sufficiently extreme</i> correlations exhibit transitivity. What does transitivity mean in the context of a graph? It means triangles. So two things happen here: The clustering of the correlation coefficient towards the boundaries at lower filter cutoffs increases the prevalence of triangles in the resulting correlation network, and the process of thresholding – removing <i>lower</i> correlations – selectively kills those edges <i>least</i> likely to be part of a triangle. We can see this through simulation: here are the mean number of triangles for the correlation networks constructed for each filter cutoff (thresholded at 30% edge density, as advocated by Zhang, et al., 2016).</p>
-<p><img src="img/fig3.png" width="100%" /></p>
+<p><img src="img/fig3.png" width="70%" /></p>
 <p>At the most extreme cutoff, we have over twice as many triangles <i> for the same edge density</i>. What does this mean for the graph topology? It means clustering. We can take a look at a few measures: Louvain modularity, the clustering coefficient, Humphries’ (2008) measure of small worldness, and the number of clusters (as detected by Louvain clustering)</p>
-<p><img src="img/fig4.png" width="100%" /></p>
-<p><img src="img/fig5.png" width="100%" /></p>
-<p><img src="img/fig6.png" width="100%" /></p>
-<p><img src="img/fig7.png" width="100%" /></p>
+<p><img src="img/fig4.png" width="70%" /></p>
+<p><img src="img/fig5.png" width="70%" /></p>
+<p><img src="img/fig6.png" width="70%" /></p>
+<p><img src="img/fig7.png" width="70%" /></p>
 <p>So we see that, at low frequencies, correlation networks constructed from uncorrelated white noise exhibit: A) substantial modularity; B) substantial clustering; C) “small-worldness”; and D) a relatively small number of clusters. In other words, they look exactly like functional brain networks.</p>
 <p>Of course, “substantial modularity” (for example) is only substantial relative to a null model – commonly chosen to be something like an Erdos-Renyi random graph, in which pairs of vertices are joined independently at random, or a Newman–Girvan null model, which preserves the expected degree of each node Both of these null models are arguably scientifically uninteresting, as when edges represent correlations (or other measures which behave like inner-products; i.e. kernels), edges cannot be added or removed independently due to the correlation’s (partial) transitivity. This means that correlation graphs constructed from random noise are not <i>random graphs</i> in the Erdos-Renyi or Newman-Girvan sense – they have more structure. Tests against these null models don’t necessarily provide the information we want, which is whether an observed correlation network exhibits modularity beyond the substantial modularity already intrinsic to correlation networks constructed from autocorrelated time series,</p>
 <p>Of course, none of this is to say that all reported functional connectivity analyses are spurious – many authors have successfully used functional connectivity estimates to do prediction, for example – but published claims that fMRI correlation networks exhibit “modular structure” are much less impressive when similar degrees of modularity can obtained from filtered white noise.</p>
@@ -209,7 +220,7 @@ Zhang, Z., Telesford, Q. K., Giusti, C., Lim, K. O., &amp; Bassett, D. S. (2016)
 <footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
   <nav class="db dt-l w-100">
     <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
-      &copy; 2022 RStudio, Anywhere
+      &copy; 2023 RStudio, Anywhere
       <span class="middot-divider"></span>
       Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
       <br />

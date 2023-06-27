@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.101.0" />
-<title>Motion | areshenkBlog</title>
+<meta name="generator" content="Hugo 0.108.0">
+<title>glass | areshenkBlog</title>
 
 
 <meta property="twitter:site" content="@apreshill">
@@ -24,30 +24,29 @@
   
     
   
-<meta name="description" content="A suite of (largely incomplete) packages for the preprocessing and analysis of 3D kinematic data from motion tracking experiments. The general approach is based on the representation of movement trajectories as functional data in the space of unit dual quaternions, allowing both position and orientation to be handled together in a principled way.">
+<meta name="description" content="R package for plotting cortical, cerebellar, and striatal surface maps.">
 
 
 <meta property="og:site_name" content="areshenkBlog">
-<meta property="og:title" content="Motion | areshenkBlog">
-<meta property="og:description" content="A suite of (largely incomplete) packages for the preprocessing and analysis of 3D kinematic data from motion tracking experiments. The general approach is based on the representation of movement trajectories as functional data in the space of unit dual quaternions, allowing both position and orientation to be handled together in a principled way." />
+<meta property="og:title" content="glass | areshenkBlog">
+<meta property="og:description" content="R package for plotting cortical, cerebellar, and striatal surface maps." />
 <meta property="og:type" content="page" />
-<meta property="og:url" content="https://areshenk.github.io/project/motion/" />
+<meta property="og:url" content="https://areshenk.github.io/project/glass/" />
 <meta property="og:locale" content="en">
 
 
 
 
     
-        <meta property="og:image" content="https://areshenk.github.io/project/motion/motion-hex.png" >
+        <meta property="og:image" content="https://areshenk.github.io/project/glass/glass-hex.png" >
         <meta property="twitter:card" content="summary">
-        <meta name="twitter:image" content="https://areshenk.github.io/project/motion/motion-hex.png" >
+        <meta name="twitter:image" content="https://areshenk.github.io/project/glass/glass-hex.png" >
     
     
-  <meta itemprop="name" content="Motion">
-<meta itemprop="description" content="Preprocessing, plotting, and analysis of 3D motion tracking data The project comprises three packages, which are in the (slow) process of being migrated over to Github. These first two are substantially complete, and are as follows:
-seathree: An R package implementing basic dual quaternion arithmetic. This is largely complete, but has not been extensively tested, and is not yet documented. Caveat emptor. seacurve: Includes routines for the preprocessing and basic plotting of unit dual quaternion time series; including interpolation within the space of dual quaternions, and automatic correction of discontinuities resulting from the two-to-one mapping between quaternions and rotations."><meta itemprop="datePublished" content="2022-06-23T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2022-06-23T00:00:00+00:00" />
-<meta itemprop="wordCount" content="161">
+  <meta itemprop="name" content="glass">
+<meta itemprop="description" content="Cortical, cerebellar, and striatal surface maps glass is a set of wrappers around functions in the ggseg and ggseg3d packages designed to make certain kinds of surface plots simpler by handling some of the necessary data manipulation automatically. The package is in early progress, and is at the moment geared towards the use of the Schaefer parcellation provided by ggsegSchaefer, and also includes some capability for rudimentary cerebellar and striatal flatmaps."><meta itemprop="datePublished" content="2022-12-21T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-12-21T00:00:00+00:00" />
+<meta itemprop="wordCount" content="90">
 <meta itemprop="keywords" content="" />
   
   
@@ -56,13 +55,13 @@ seathree: An R package implementing basic dual quaternion arithmetic. This is la
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
   
   
-  <link rel="stylesheet" href="/style.main.min.f1b88c869e9feb00a1fe21e8f9979826ba90e026e18b274307b59fb8cfe5103c.css" integrity="sha256-8biMhp6f6wCh/iHo&#43;ZeYJrqQ4CbhiydDB7WfuM/lEDw=" media="screen">
+  <link rel="stylesheet" href="/style.main.min.977927cc9fbb8267905a51fc736bee04a98f0fee4d68d13a30997d8aeb6967de.css" integrity="sha256-l3knzJ&#43;7gmeQWlH8c2vuBKmPD&#43;5NaNE6MJl9iutpZ94=" media="screen">
   
   
-  <script src="/panelset.min.dca42702d7daf6fd31dc352efd2bcf0e4ac8c05ccaa58d9293f6177462de5d5f.js" type="text/javascript"></script>
+  <script src="/panelset.min.ed1ac24b6e16f4e2481e3d1d098ae66f5bc77438aef619e6e266d8ac5b00dc72.js" type="text/javascript"></script>
   
   
-  <script src="/main.min.bc37fdb0cb9ebdd5718a2d4c6892a4041fec76f8f7974d6790d6c2c096d753f5.js" type="text/javascript"></script>
+  <script src="/main.min.e567f7e8ac7c79035da4f709e5d53dd1f0ab375425524ad1e9d79dd672a9678b.js" type="text/javascript"></script>
 </head>
 <body>
       <div class="grid-container single">
@@ -81,6 +80,11 @@ seathree: An R package implementing basic dual quaternion arithmetic. This is la
         
         
         
+      <a class="link f6 f5-l dib pv1 ph2 " href="/research/" title="Research">Research</a>
+      
+        
+        
+        
       <a class="link f6 f5-l dib pv1 ph2 " href="/blog/" title="Blog">Blog</a>
       
         
@@ -91,7 +95,7 @@ seathree: An R package implementing basic dual quaternion arithmetic. This is la
         
         
         
-      <a class="link f6 f5-l dib pv1 ph2 " href="/collection/" title="Guides and documentation">Guides</a>
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/areshenk_cv.pdf" title="CV">CV</a>
       
       
     </div>
@@ -99,38 +103,36 @@ seathree: An R package implementing basic dual quaternion arithmetic. This is la
 </header>
 
 <main class="page-main pa4" role="main">
-  <section class="page-content mw7 center">
+  <section class="page-content mw8 center">
     <article class="post-content pa0 ph4-l">
       <header class="post-header">
-        <h1 class="f1 lh-solid measure-narrow mb3 fw4">Motion</h1>
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">glass</h1>
         
         <p class="f6 measure lh-copy mv1"></p>
-        <p class="f7 db mv0 ttu">June 23, 2022</p>
+        <p class="f7 db mv0 ttu">December 21, 2022</p>
 
       
 
       </header>
-      <section class="post-body pt5 pb4">
+      <section class="post-body pt5 pb4 f5">
         <p align="center">
-  <img src="motion-hex.png" />
+  <img src="glass-hex.png" />
 </p>
 
 
 
 
-<h2 id="preprocessing-plotting-and-analysis-of-3d-motion-tracking-data">Preprocessing, plotting, and analysis of 3D motion tracking data
-  <a href="#preprocessing-plotting-and-analysis-of-3d-motion-tracking-data"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
+<h2 id="cortical-cerebellar-and-striatal-surface-maps">Cortical, cerebellar, and striatal surface maps
+  <a href="#cortical-cerebellar-and-striatal-surface-maps"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 0h24v24H0z" fill="currentColor"></path>
       <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
     </svg></a>
 </h2>
+<p align="center">
+  <a href="https://github.com/areshenk-rpackages/glass"><img src="giticon.png" alt="Github" style="width:64px;height:64px;"></a>
+</p>
 <hr>
-<p>The project comprises three packages, which are in the (slow) process of being migrated over to Github. These first two are substantially complete, and are as follows:</p>
-<ul>
-<li>
-<a href="https://github.com/areshenk-rpackages/seathree" target="_blank" rel="noopener"><strong>seathree</strong></a>: An R package implementing basic dual quaternion arithmetic. This is largely complete, but has not been extensively tested, and is not yet documented. Caveat emptor.</li>
-<li><strong>seacurve</strong>: Includes routines for the preprocessing and basic plotting of unit dual quaternion time series; including interpolation within the space of dual quaternions, and automatic correction of discontinuities resulting from the two-to-one mapping between quaternions and rotations. This package is substantially complete, but has not yet been uploaded or documented.</li>
-</ul>
+<p><strong>glass</strong> is a set of wrappers around functions in the ggseg and ggseg3d packages designed to make certain kinds of surface plots simpler by handling some of the necessary data manipulation automatically. The package is in early progress, and is at the moment geared towards the use of the Schaefer parcellation provided by ggsegSchaefer, and also includes some capability for rudimentary cerebellar and striatal flatmaps.</p>
 
 
 
@@ -141,29 +143,18 @@ seathree: An R package implementing basic dual quaternion arithmetic. This is la
       <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
     </svg></a>
 </h3>
-<p><strong>seathree</strong> can be installed from GitHub with using <code>install_git()</code> from the <code>devtools</code> package using the command below:</p>
-<p><code>devtools::install_git('areshenk-rpackages/seathree')</code></p>
-
-
-
-
-<h3 id="issues">Issues
-  <a href="#issues"><svg class="anchor-symbol" aria-hidden="true" height="26" width="26" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg">
-      <path d="M0 0h24v24H0z" fill="currentColor"></path>
-      <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76.0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71.0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71.0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76.0 5-2.24 5-5s-2.24-5-5-5z"></path>
-    </svg></a>
-</h3>
-<p><strong>seathree</strong> in particular is in more or less working condition, but has not been extensively tested. In particular, there may be mathematical errors which have not yet been caught.</p>
+<p><strong>glass</strong> can be installed from GitHub with using <code>install_git()</code> from the <code>devtools</code> package using the command below:</p>
+<p><code>devtools::install_git('areshenk-rpackages/glass')</code></p>
 
         
         <details closed class="f6 fw7 input-reset">
   <dl class="f6 lh-copy">
     <dt class="fw7">Posted on:</dt>
-    <dd class="fw5 ml0">June 23, 2022</dd>
+    <dd class="fw5 ml0">December 21, 2022</dd>
   </dl>
   <dl class="f6 lh-copy">
     <dt class="fw7">Length:</dt>
-    <dd class="fw5 ml0">1 minute read, 161 words</dd>
+    <dd class="fw5 ml0">1 minute read, 90 words</dd>
   </dl>
   
   
@@ -194,7 +185,7 @@ seathree: An R package implementing basic dual quaternion arithmetic. This is la
 <footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
   <nav class="db dt-l w-100">
     <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
-      &copy; 2022 RStudio, Anywhere
+      &copy; 2023 RStudio, Anywhere
       <span class="middot-divider"></span>
       Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
       <br />

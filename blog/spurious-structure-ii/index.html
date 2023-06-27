@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.101.0" />
+<meta name="generator" content="Hugo 0.108.0">
 <title>More spurious modular structure in functional brain networks | areshenkBlog</title>
 
 
@@ -56,13 +56,13 @@ Assessment of dynamic functional connectivity usually involves estimating functi
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
   
   
-  <link rel="stylesheet" href="/style.main.min.f1b88c869e9feb00a1fe21e8f9979826ba90e026e18b274307b59fb8cfe5103c.css" integrity="sha256-8biMhp6f6wCh/iHo&#43;ZeYJrqQ4CbhiydDB7WfuM/lEDw=" media="screen">
+  <link rel="stylesheet" href="/style.main.min.977927cc9fbb8267905a51fc736bee04a98f0fee4d68d13a30997d8aeb6967de.css" integrity="sha256-l3knzJ&#43;7gmeQWlH8c2vuBKmPD&#43;5NaNE6MJl9iutpZ94=" media="screen">
   
   
-  <script src="/panelset.min.dca42702d7daf6fd31dc352efd2bcf0e4ac8c05ccaa58d9293f6177462de5d5f.js" type="text/javascript"></script>
+  <script src="/panelset.min.ed1ac24b6e16f4e2481e3d1d098ae66f5bc77438aef619e6e266d8ac5b00dc72.js" type="text/javascript"></script>
   
   
-  <script src="/main.min.bc37fdb0cb9ebdd5718a2d4c6892a4041fec76f8f7974d6790d6c2c096d753f5.js" type="text/javascript"></script>
+  <script src="/main.min.e567f7e8ac7c79035da4f709e5d53dd1f0ab375425524ad1e9d79dd672a9678b.js" type="text/javascript"></script>
 </head>
 <body>
       <div class="grid-container">
@@ -81,6 +81,11 @@ Assessment of dynamic functional connectivity usually involves estimating functi
         
         
         
+      <a class="link f6 f5-l dib pv1 ph2 " href="/research/" title="Research">Research</a>
+      
+        
+        
+        
       <a class="link f6 f5-l dib pv1 ph2 active" href="/blog/" title="Blog">Blog</a>
       
         
@@ -88,13 +93,18 @@ Assessment of dynamic functional connectivity usually involves estimating functi
         
       <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
       
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/areshenk_cv.pdf" title="CV">CV</a>
+      
       
     </div>
   </nav>
 </header>
 
 <main class="page-main pa4" role="main">
-  <section class="page-content mw7 center">
+  <section class="page-content mw8 center">
     <article class="post-content pa0 ph4-l">
       <header class="post-header">
         <h1 class="f1 lh-solid measure-narrow mb3 fw4">More spurious modular structure in functional brain networks</h1>
@@ -105,17 +115,18 @@ Assessment of dynamic functional connectivity usually involves estimating functi
       
 
       </header>
-      <section class="post-body pt5 pb4">
+      <section class="post-body pt5 pb4 f5">
         
+<script src="https://areshenk.github.io/blog/spurious-structure-ii/index_files/header-attrs/header-attrs.js"></script>
 
 
 <p>Even in the absence of any true underlying network structure, functional brain networks <a href="http://areshenk-research-notes.com/spurious-structure-in-functional-brain-networks/">can easily show complex, modular structure</a>, possibly due to a combination of the transitive-ish properties of most functional connectivity measures, and the standard approaches to fMRI preprocessing (esp. low pass filtering)</p>
 <p>Assessment of <i>dynamic</i> functional connectivity usually involves estimating functional connectivity within a temporal sliding window, which requires the arbitrary selection of a window size. As with low-pass filtering, a small window length reduces the precision of the functional connectivity estimate by reducing the effective sample size, which should similarly result in greater modular structure.</p>
 <p>This time, we’ll use real fMRI data consisting of an atlas of 175 regions recorded for a duration of 150 TRs. To ensure that there is no true underlying modular structure, I’ve randomly selected each of the 175 signals from different ROIs from different subjects during different scans (resting state vs. various tasks), and reversed half of the signals in time. We then construct correlation networks at window lengths of 10, 25, 50, 100, and 150 TRs by thresholding the sample correlation matrix at positive significant values using a t-test with an uncorrected threshold of <span class="math inline">\(\alpha = .05\)</span>.</p>
 <p><a href="http://areshenk-research-notes.com/spurious-structure-in-functional-brain-networks/">As we know</a>, t-tests for correlations are wildly miscalibrated when applied to fMRI time series, and this problem is especially severe at short window lengths. Take the figure below, which shows a pair of signals (left) and the distribution of pairwise sample correlations (right) at each window length.</p>
-<p><img src="img/fig1.png" width="100%" /></p>
+<p><img src="img/fig1.png" width="70%" /></p>
 <p>Notice the increased prevalence of extreme correlations at smaller window lengths – the result of the near linearity of the signals within the window. For all the reasons discussed in the previous post, we would expect this to result in increased modular structure at shorter window lengths. Sure enough, short window lengths result in extremely modular, efficient, small-world networks, even in the absence of any real underlying network structure.</p>
-<p><img src="img/fig2.png" width="100%" /></p>
+<p><img src="img/fig2.png" width="70%" /></p>
 
         
         <details closed class="f6 fw7 input-reset">
@@ -159,7 +170,7 @@ Assessment of dynamic functional connectivity usually involves estimating functi
 <footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
   <nav class="db dt-l w-100">
     <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
-      &copy; 2022 RStudio, Anywhere
+      &copy; 2023 RStudio, Anywhere
       <span class="middot-divider"></span>
       Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
       <br />

@@ -6,7 +6,7 @@
     <description>Recent content in Projects on areshenkBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 23 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://areshenk.github.io/project/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://areshenk.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>spdm</title>
       <link>https://areshenk.github.io/project/spdm/</link>
@@ -26,6 +26,15 @@
 Installation MSMVSampEn is designed for efficiently computing multiscale sample entropy from highly multivariate biological signals (e.g. eeg, meg, and fMRI BOLD data). The package can be installed directly from its Github repository using
 devtools::install_git(&#39;https://github.com/areshenk-rpackages/MSMVSampEn&#39;)
 Issues Note that the interface of MSMVSampEn is likely to undergo substantial changes in the near future in order to accommodate additional features.</description>
+    </item>
+    
+    <item>
+      <title>glass</title>
+      <link>https://areshenk.github.io/project/glass/</link>
+      <pubDate>Wed, 21 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://areshenk.github.io/project/glass/</guid>
+      <description>Cortical, cerebellar, and striatal surface maps glass is a set of wrappers around functions in the ggseg and ggseg3d packages designed to make certain kinds of surface plots simpler by handling some of the necessary data manipulation automatically. The package is in early progress, and is at the moment geared towards the use of the Schaefer parcellation provided by ggsegSchaefer, and also includes some capability for rudimentary cerebellar and striatal flatmaps.</description>
     </item>
     
   </channel>
