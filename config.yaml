@@ -85,6 +85,10 @@ menu:
       title: Project Portfolio
       url: /project/
       weight: 4
+    - name: CV
+      title: CV
+      url: /about/areshenk_cv.pdf
+      weight: 5
 privacy:
   disqus:
     disable: no
