@@ -7,7 +7,7 @@ sidebar_left: false
 title: Research interests
 ---
 
-### Explicit processes in sensorimotor learning and control
+### Cognitive contributions to sensorimotor learning and control
 
 <img align="left" width="30%" src="fig_learning.png">
 
@@ -19,7 +19,7 @@ Learning to interact successfully with the environment requires learning to sele
 
 ### Methods for analyzing whole-brain functional connectivity
 
-<img align="left" width="25%" src="fig_spd.png">
+<img align="right" width="25%" src="fig_spd.png">
 
 The analysis of fMRI functional connectivity typically involves the analysis of very high-dimensional covariance matrices, encoding the BOLD signal covariance between brain regions or voxels. There is considerable evidence that the analysis of the resulting data -- e.g. clustering, dimension reduction, etc -- benefits from statistical methods which respect the natural geometric structure of the space of covariance matrices. The most popular of these approaches, which I've used extensively in my imaging work, takes advantage of the Riemannian-manifold structure of the space of covariance matrices. Many of these methods have been implemented in my R package [spdm](/project/spdm/).
 
