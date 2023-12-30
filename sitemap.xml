@@ -2,35 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://areshenk.github.io/collection/project/01-principles/</loc>
-    <lastmod>2022-10-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://areshenk.github.io/project/spdm/</loc>
     <lastmod>2022-06-23T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://areshenk.github.io/collection/covariance/01-motivation/</loc>
-    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://areshenk.github.io/collection/project/</loc>
-    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://areshenk.github.io/project/msmvsampen/</loc>
     <lastmod>2022-06-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://areshenk.github.io/collection/covariance/</loc>
-    <lastmod>2022-06-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://areshenk.github.io/collection/covariance/02-postcards/</loc>
-    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://areshenk.github.io/collection/project/02-description/</loc>
-    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://areshenk.github.io/project/glass/</loc>
     <lastmod>2022-12-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://areshenk.github.io/collection/covariance/03-distill/</loc>
-    <lastmod>2021-01-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://areshenk.github.io/blog/spurious-structure-iii/</loc>
     <lastmod>2019-05-26T00:00:00+00:00</lastmod>
@@ -56,9 +35,6 @@
     <loc>https://areshenk.github.io/project/</loc>
     <lastmod>2022-12-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://areshenk.github.io/collection/</loc>
-    <lastmod>2022-10-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://areshenk.github.io/blog/</loc>
     <lastmod>2019-05-26T00:00:00+00:00</lastmod>
   </url><url>
@@ -77,6 +53,8 @@
     <loc>https://areshenk.github.io/categories/</loc>
   </url><url>
     <loc>https://areshenk.github.io/contributors/</loc>
+  </url><url>
+    <loc>https://areshenk.github.io/collection/</loc>
   </url><url>
     <loc>https://areshenk.github.io/license/</loc>
   </url><url>

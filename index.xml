@@ -8,31 +8,12 @@
     <language>en</language>
     <lastBuildDate>Wed, 21 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://areshenk.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Basic principles</title>
-      <link>https://areshenk.github.io/collection/project/01-principles/</link>
-      <pubDate>Sat, 29 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://areshenk.github.io/collection/project/01-principles/</guid>
-      <description>Basic principles A good organizational scheme:
-Enforces good habits. The organization should constrain your workflow enough that you’re forced to practice good coding and research practices. Is reproducible. The organization should cover the entire workflow, from raw data to polished figures. A naive observer should be able to understand the organization of the project and replicate the analysis with a minimum of effort. Is interpretable. The organization should be simple enough to be interpretable to a naive observer.</description>
-    </item>
-    
-    <item>
       <title>spdm</title>
       <link>https://areshenk.github.io/project/spdm/</link>
       <pubDate>Thu, 23 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://areshenk.github.io/project/spdm/</guid>
       <description>Symmetric, positive definite matrices in R spdm is an R package implementing operations on symmetric, positive-definite matrices (aka covariance matrices). Besides offering several forms of regularized covariance estimation, spdm is focused on geometry-respecting covariance analysis &amp;ndash; that is, operations which respect the intrinsic Riemannian manifold structure of the set of the symmetric positive-definite matrices. In my own work, these techniques are usually applied to the analysis of fMRI functional connectivity.</description>
-    </item>
-    
-    <item>
-      <title>Covariance in one dimension</title>
-      <link>https://areshenk.github.io/collection/covariance/01-motivation/</link>
-      <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://areshenk.github.io/collection/covariance/01-motivation/</guid>
-      <description>Covariance in a single dimension In this and the following posts, we’ll return repeatedly to the case of a univariate random variable, in which case the covariance reduces to the ordinary variance. This will let us test out computations in a simple setting, and will also provide good intuition. In particular, many of the differentio-geometric properties of the covariance have simple interpretations in the one-dimensional case, which are helpful for building intuition for some of the concepts we’ll be discussing without digging too deep into the mathematical concepts themselves.</description>
     </item>
     
     <item>
@@ -48,48 +29,12 @@ Issues Note that the interface of MSMVSampEn is likely to undergo substantial ch
     </item>
     
     <item>
-      <title>A postcard</title>
-      <link>https://areshenk.github.io/collection/covariance/02-postcards/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://areshenk.github.io/collection/covariance/02-postcards/</guid>
-      <description>Pre-requisites First, make sure you have the latest version of the postcards package installed from CRAN:
-install.packages(&amp;#34;postcards&amp;#34;) Restart your R session. If you use RStudio, use the menu item Session &amp;gt; Restart R or the associated keyboard shortcut:
-Ctrl + Shift + F10 (Windows and Linux) or Command + Shift + F10 (Mac OS). packageVersion(&amp;#34;postcards&amp;#34;) [1] ‘0.2.0’ Create GitHub repo Online.
-Clone GitHub repo usethis::create_from_github(&amp;#34;https://github.com/apreshill/global-postcard.git&amp;#34;) ✨ Commit &amp;amp; Push! ✨</description>
-    </item>
-    
-    <item>
-      <title>A postcard</title>
-      <link>https://areshenk.github.io/collection/project/02-description/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://areshenk.github.io/collection/project/02-description/</guid>
-      <description>Pre-requisites First, make sure you have the latest version of the postcards package installed from CRAN:
-install.packages(&amp;#34;postcards&amp;#34;) Restart your R session. If you use RStudio, use the menu item Session &amp;gt; Restart R or the associated keyboard shortcut:
-Ctrl + Shift + F10 (Windows and Linux) or Command + Shift + F10 (Mac OS). packageVersion(&amp;#34;postcards&amp;#34;) [1] ‘0.2.0’ Create GitHub repo Online.
-Clone GitHub repo usethis::create_from_github(&amp;#34;https://github.com/apreshill/global-postcard.git&amp;#34;) ✨ Commit &amp;amp; Push! ✨</description>
-    </item>
-    
-    <item>
       <title>glass</title>
       <link>https://areshenk.github.io/project/glass/</link>
       <pubDate>Wed, 21 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://areshenk.github.io/project/glass/</guid>
       <description>Cortical, cerebellar, and striatal surface maps glass is a set of wrappers around functions in the ggseg and ggseg3d packages designed to make certain kinds of surface plots simpler by handling some of the necessary data manipulation automatically. The package is in early progress, and is at the moment geared towards the use of the Schaefer parcellation provided by ggsegSchaefer, and also includes some capability for rudimentary cerebellar and striatal flatmaps.</description>
-    </item>
-    
-    <item>
-      <title>A distill site</title>
-      <link>https://areshenk.github.io/collection/covariance/03-distill/</link>
-      <pubDate>Sat, 02 Jan 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://areshenk.github.io/collection/covariance/03-distill/</guid>
-      <description>Pre-requisites First, make sure you have the latest version of the distill package installed from CRAN:
-install.packages(&amp;quot;distill&amp;quot;) Restart your R session. If you use RStudio, use the menu item Session &amp;gt; Restart R or the associated keyboard shortcut:
-Ctrl + Shift + F10 (Windows and Linux) or Command + Shift + F10 (Mac OS). &amp;lt;!-- --&amp;gt; packageVersion(&amp;quot;distill&amp;quot;) [1] ‘1.2’ Create GitHub repo Online.
-Clone GitHub repo usethis::create_from_github(&amp;quot;https://github.com/apreshill/global-distill.git&amp;quot;) ✨ Commit &amp;amp; Push!</description>
     </item>
     
     <item>
