@@ -1,0 +1,55 @@
+---
+title: "Publications"
+bibliography: files/references_cv.bib
+csl: files/formatting/apa-cv.csl
+suppress-bibliography: true
+link-citations: false
+citations-hover: false
+filters: 
+    - files/formatting/dociteproc.lua
+    - files/formatting/bold-author.lua
+bold-auth-name:
+  - family: Areshenkoff
+    given: C. N.
+citeproc: false
+---
+
+### Preprints
+
+-   [@areshenkoff2023distinct]
+
+### Publications
+
+-   [@brien2023classification]
+-   [@standage2023whole]
+-   [@gale2022distinct]
+-   [@areshenkoff2022neural]
+-   [@de2021human]
+-   [@areshenk2020muting]
+-   [@gale2019motor]
+-   [@standage2020dynamic]
+-   [@karr2018unity]
+-   [@trafimow2018manipulating]
+-   [@areshenkoff2017task]
+-   [@smart2017non]
+-   [@karr2014executive]
+-   [@karr2014blast]
+-   [@karr2014neuropsychological]
+-   [@karr2014empirical]
+
+### Presentations
+
+-   [@sfn2023]
+-   [@ncm2021]
+-   [@ohbm2020]
+-   [@sfn2019a]
+-   [@sfn2018a]
+-   [@sfn2018b]
+-   [@ndc2016]
+-   [@pen2015]
+-   [@mulligan2015eeg]
+-   [@areshenkoff2015embodied]
+-   [@areshenkoff2013igt]
+-   [@areshenkoff2013ins]
+-   [@karr2012ger]
+-   [@grindstaff2012]

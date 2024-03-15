@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Corson N. Areshenkoff">
+<meta name="dcterms.date" content="2023-09-26">
+
+<title>areshenkBlog - ChatGPT experiment log pt.&nbsp;1: Learning basic statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/custom-callouts/custom-callouts.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">areshenkBlog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../research.html" rel="" target="">
+ <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../posts.html" rel="" target="">
+ <span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../packages.html" rel="" target="">
+ <span class="menu-text">Software</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications.html" rel="" target="">
+ <span class="menu-text">Publications</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/areshenk" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ChatGPT experiment log pt.&nbsp;1: Learning basic statistics</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Corson N. Areshenkoff </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 26, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<p>It has to be good for something, right? I thought it would be fun to experiment with some tasks for which ChatGPT is widely used in data science; or, at least, for which I’ve seen it used by students in data science / statistics chatrooms and forums. One of the most common – and for which examples can be found everywhere beginning data scientists congregate – is the use of ChatGPT to design an analysis, answer questions about statistics, or more generally to provide <em>knowledge</em>.</p>
+<p>One of the major difficulties in evaluating resources like ChatGPT as a teacher is that 1) Without already having detailed technical knowledge, it’s hard to evaluate the accuracy of its output, and 2) <em>With</em> detailed knowledge and experience, it’s too easy to (unconsciously) fill in the gaps in ChatGPT’s output, or to interpret the output correctly in a way that a novice would probably not. Here’s a simple example of the kind of use I’ve seen recommended to novices trying to pick up on the basics of data analysis:</p>
+<div class="callout callout-style-default callout-prompt no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How do I analyze two continuous variables?</p>
+</div>
+</div>
+<p>This question is more than a bit ill-posed, as I haven’t actually explained anything about the nature of the data, or the specific research question</p>
+<div class="callout callout-style-default callout-gptout no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ChatGPT output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Analyzing two continuous variables typically involves examining the relationship between them. Here are the common methods to analyze two continuous variables:</p>
+<ol type="1">
+<li><strong>Descriptive Statistics</strong>:
+<ul>
+<li>Calculate the mean, median, mode, standard deviation, and range for each variable.</li>
+<li>This gives a sense of the central tendency and spread of each variable.</li>
+</ul></li>
+<li><strong>Graphical Analysis</strong>:
+<ul>
+<li><strong>Scatter Plot</strong>: Plot one variable against the other to visually inspect the relationship.</li>
+<li><strong>Histograms</strong>: For each variable, to see the distribution.</li>
+<li><strong>Box Plots</strong>: For each variable, to visualize the central tendency and spread, as well as any outliers.</li>
+</ul></li>
+<li><strong>Correlation Analysis</strong>:
+<ul>
+<li><strong>Pearson’s Correlation Coefficient (r)</strong>: Measures the strength and direction of a linear relationship between two variables. The value ranges between -1 and 1. A value close to 1 implies a strong positive correlation, a value close to -1 implies a strong negative correlation, and a value close to 0 implies no correlation.</li>
+<li><strong>Spearman’s Rank Correlation</strong>: Used when the relationship is not linear or the data is not normally distributed.</li>
+</ul></li>
+<li><strong>Regression Analysis</strong>:
+<ul>
+<li><strong>Simple Linear Regression</strong>: If you suspect one variable might predict another, you can fit a linear regression model. This gives an equation of the form <span class="math inline">\(y = mx + c\)</span>, where <span class="math inline">\(y\)</span> is the dependent variable, <span class="math inline">\(x\)</span> is the independent variable, <span class="math inline">\(m\)</span> is the slope, and <span class="math inline">\(c\)</span> is the y-intercept.</li>
+<li><strong>Multiple Regression</strong>: If there are other variables that might influence the relationship, you can include them in a multiple regression analysis.</li>
+</ul></li>
+<li><strong>Non-parametric Tests</strong>:
+<ul>
+<li>If the data doesn’t meet the assumptions of normality, you might consider non-parametric tests like the Mann-Whitney U test or the Kruskal-Wallis test.</li>
+</ul></li>
+<li><strong>Residual Analysis</strong>:
+<ul>
+<li>After fitting a regression model, it’s important to check the residuals (the differences between observed and predicted values) to ensure that the assumptions of the model are met.</li>
+</ul></li>
+<li><strong>Covariance Analysis</strong>:
+<ul>
+<li>Covariance measures the joint variability of two random variables. If the greater values of one variable mainly correspond with the greater values of the other variable, and the same holds for the lesser values, the covariance is positive.</li>
+</ul></li>
+<li><strong>Cross-tabulation and Chi-square Test</strong>:
+<ul>
+<li>Although typically used for categorical data, continuous data can be binned into categories, and a chi-square test can be used to determine if there’s a significant association between the two variables.</li>
+</ul></li>
+</ol>
+<p>When analyzing two continuous variables, it’s crucial to consider the context and the nature of the data. Not all methods will be appropriate for all datasets, and sometimes domain knowledge will guide the choice of analysis.</p>
+</div>
+</div>
+<p>This is actually a fairly reasonable survey of the most common approaches to plotting, summarizing, or quantifying the association between two continuous variables. The boilerplate text at the bottom of the output is reasonable, too, since I haven’t actually explained anything about the goals of the analysis. Someone with little knowledge of basic statistics could actually get a useful sense of how to proceed with their analysis. For example, if I were interested in using one of the variables to predict the other, the output clearly suggests that something like a simple linear regression model, or the correlation/covariance, would be useful.</p>
+<p>Unfortunately, many of the specific details – and some of the overall organization – is/are nonsense, and are nonsense in ways that would very possibly lead a novice to make nonsensical decisions. Examples:</p>
+<ol type="1">
+<li><p>ChatGPT describes the Spearman correlation as being used “<em>when the relationship is not linear or the data is not normally distributed</em>”. The first part is true: the Spearman correlation quantifies general monotonic relationships, but the second part is nonsense. Nothing about the <em>interpretation</em> of the Pearson correlation requires normality, and most <em>tests</em> of the Pearson correlation do not assume normality of any individual variable. The standard t-test for the correlation assumes only that the errors are normal when one variable is regressed on the other. If you’re not willing to assume any kind of normality at all, then you can just use a permutation test. The decision as to which measure to use is dictated by the kinds of relationship the user is trying to quantify, not any distributional assumptions.</p></li>
+<li><p>That the chi-squared test can be used when “<em>continuous data [are] binned into categories […] to determine if there’s a significant association between the two variables</em>”. This is strictly true, but is essentially always a terrible idea. It is nearly always less powerful than a model actually adapted to continuous data, and the association that it is testing for (i.e.&nbsp;general non-independence) rarely answers the question most people actually have about multiple continuous variables. All in all, just a useless suggestion.</p></li>
+<li><p>“<em>If the data doesn’t meet the assumptions of normality, you might consider non-parametric tests like the Mann-Whitney U test or the Kruskal-Wallis test.</em>”. This is a bizarre suggestion, since the MW and KW are not “alternatives” to any other technique on the list. That is, there is nothing at all on the list that a) assumes normality, and b) could be replaced with either of these tests in a way that actually answers the same research question.</p></li>
+</ol>
+<p>Number (1) is a very common misconception in introductory statistics and data science course materials, and in articles on platforms like medium, and so it seems likely that ChatGPT is just regurgitating common misinformation. The same is true of (3), where the MW and KW are often presented as “non-parametric alternatives” to the t-test, even though they test completely different hypotheses (stochastic equality vs.&nbsp;mean equality). Often – as in this ChatGPT output – the claim is that these tests should be used instead of the t-test when the data are non-normal, even though there are other alternatives (like permutation tests) which do not assume normality and actually answer the same question.</p>
+<p>Number (3) also lacks context; the MW/KW are recommended “when the data are non-normal”, but it’s not explained what they’re supposed to be replacing, and none of the other procedures actually outlined by ChatGPT assume or require normality of any of the observed variables (only linear regression typically assumes normality of the <em>errors</em>). I think this is just an example of ChatGPT being skilled at generating text it has seen before, but not in generating output with a coherent/ logical organization. Something like this could easily lead someone to plot a few of their variables, note that they don’t look normal, and choose one of these tests even though another procedure might be perfectly appropriate, and might more directly address their actual research question.</p>
+<p>Speaking of the Mann-Whitney:</p>
+<div class="callout callout-style-default callout-prompt no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When should I use the Mann-Whitney test?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-gptout no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ChatGPT output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The Mann-Whitney U test, also known as the Wilcoxon rank-sum test, is a non-parametric statistical test used to determine if there are differences between two independent groups on a continuous or ordinal variable. Here are the situations when you should consider using the Mann-Whitney U test:</p>
+<p>[…]</p>
+<ol start="4" type="1">
+<li><strong>Comparing Central Tendencies</strong>:
+<ul>
+<li>The Mann-Whitney U test compares the medians of two groups rather than the means. It tests the null hypothesis that the probability of observing a randomly selected value from the first group that is larger than a randomly selected value from the second group is equal to 0.5.</li>
+</ul></li>
+</ol>
+<p>[…]</p>
+<ol start="7" type="1">
+<li><strong>Assumption of Similar Shapes</strong>:
+<ul>
+<li>For the Mann-Whitney U test to be a test of medians, the distributions of the two groups should have the same shape. If the shapes are different, the test is more of a test of stochastic dominance (i.e., the likelihood that a randomly selected value from one distribution will be greater than a randomly selected value from the other distribution).</li>
+</ul></li>
+</ol>
+<p>In summary, the Mann-Whitney U test is a versatile non-parametric test suitable for comparing two independent groups when the assumptions of parametric tests (like the t-test) are not met. However, as with all statistical tests, it’s essential to understand its assumptions and limitations before using it.</p>
+</div>
+</div>
+<p>That’s pretty reasonable. I was expecting the incorrect information (which is actually provided in 4.) that the MW is a test of medians (which is very commonly reported in introductory textbooks and online material), but then the output corrects itself in (7) and reports that it is only a test of medians when the alternative is a pure location shift. Minor nitpick: “Likelihood” is the wrong word here. “Probability” is correct. But so what? ChatGPT is just being colloquial.</p>
+<p>It is interesting, though, that ChatGPT provides both the wrong and the right answer in the same output. It also gives the correct definition of stochastic equality in (4) – this is the actual null hypothesis – but claims in the same breath that the MW is a test of medians. This is a good example of ChatGPT stringing together realistic sounding output, but not being able to reason about the technical meaning of its words.</p>
+<div class="callout callout-style-default callout-prompt no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Can you give me a simple description of linear regression?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-gptout no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ChatGPT output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Certainly!</p>
+<p><strong>Linear Regression</strong> is a statistical method that models the relationship between a dependent variable and one or more independent variables by fitting a linear equation to the observed data. The simplest form of linear regression, with one dependent and one independent variable, is represented by the equation:</p>
+<p><span class="math display">\[ y = \beta_0 + \beta_1x + \epsilon \]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(y\)</span> is the dependent variable (what we’re trying to predict).</li>
+<li><span class="math inline">\(x\)</span> is the independent variable (the input).</li>
+<li><span class="math inline">\(\beta_0\)</span> is the y-intercept (value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x\)</span> is 0).</li>
+<li><span class="math inline">\(\beta_1\)</span> is the slope of the line (how much <span class="math inline">\(y\)</span> changes for a unit change in <span class="math inline">\(x\)</span>).</li>
+<li><span class="math inline">\(\epsilon\)</span> represents the error term (the difference between the observed and predicted values).</li>
+</ul>
+<p>The primary goal of linear regression is to find the best-fitting straight line that accurately predicts the output values within a range.</p>
+</div>
+</div>
+<p>Not bad. ChatGPT gives the wrong definition of the error term (what it describes is actually the residuals), but the overall explanation is pretty clear and intuitive. This sounds more or less like what we want. So how do I actually perform a regression analysis?</p>
+<div class="callout callout-style-default callout-prompt no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How do I use linear regression to predict one variable using another?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-gptout no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ChatGPT output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Using linear regression to predict one variable using another involves establishing a linear relationship between the two variables. Here’s a step-by-step guide using Python with the <code>statsmodels</code> and <code>matplotlib</code> libraries:</p>
+<ol type="1">
+<li><strong>Import Necessary Libraries</strong>:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><strong>Prepare the Data</strong>: Assuming you have two lists or arrays, <code>X</code> (independent variable) and <code>y</code> (dependent variable):</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><strong>Add a Constant to the Independent Variable</strong>: This step is necessary to include an intercept in the regression model.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li><strong>Fit the Linear Regression Model</strong>:</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(y, X).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li><strong>Print the Summary</strong>: This will give you details about the regression, including coefficients, R-squared value, p-values, etc.</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
+<li><strong>Make Predictions</strong>: You can use the fitted model to make predictions for new values of the independent variable.</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>new_X <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">6</span>]]  <span class="co"># Predicting y for X=6</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>predicted_y <span class="op">=</span> model.predict(new_X)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Predicted value of y for X=6 is </span><span class="sc">{</span>predicted_y[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="7" type="1">
+<li><strong>Visualize the Regression Line</strong>:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plt.scatter(X[:, <span class="dv">1</span>], y, color<span class="op">=</span><span class="st">'blue'</span>, label<span class="op">=</span><span class="st">'Data Points'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.plot(X[:, <span class="dv">1</span>], model.predict(X), color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'Regression Line'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'X'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'y'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Linear Regression'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will plot the data points and the regression line, helping you visualize the linear relationship between the two variables.</p>
+<p>Remember to install the required libraries (<code>statsmodels</code> and <code>matplotlib</code>) before running the code. This example demonstrates simple linear regression with one independent variable. If you have multiple independent variables, the process remains largely the same, but you’ll need to adjust the data preparation and visualization steps accordingly.</p>
+</div>
+</div>
+<p>This is pretty spectacular, honestly. If you know enough to validate the model output (to ensure that the code is running correctly), then this would be a fantastic way for someone already proficient in statistics, and comfortable with a language like R, to learn statistical programming in Python. But suppose we weren’t already knowledgeable, and we wanted to know more about whether this model is reasonable at all.</p>
+<div class="callout callout-style-default callout-prompt no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How do I know if linear regression is right for my dataset?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-gptout no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ChatGPT output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Determining whether linear regression is appropriate for your dataset involves checking several conditions and considering the nature of your data and research question. Here are some steps to help you decide:</p>
+<ol type="1">
+<li><strong>Define the Research Question</strong>:
+<ul>
+<li>Linear regression is suitable for understanding the relationship between one dependent (response) variable and one or more independent (predictor) variables. Ensure your research question aligns with this.</li>
+</ul></li>
+<li><strong>Visualize the Data</strong>:
+<ul>
+<li>Create scatter plots of the dependent variable against each independent variable.</li>
+<li>Look for a linear trend in the scatter plots. If the relationship appears non-linear, a linear model may not be the best choice.</li>
+</ul></li>
+<li><strong>Check Linearity Assumption</strong>:
+<ul>
+<li>Linear regression assumes a linear relationship between the dependent and independent variables.</li>
+<li>If the relationship is inherently non-linear, consider transforming the variables or using non-linear regression models.</li>
+</ul></li>
+<li><strong>Examine the Distribution of the Dependent Variable</strong>:
+<ul>
+<li>While linear regression does not require the dependent variable to be normally distributed, extreme skewness or outliers can impact the model. Consider data transformations if necessary.</li>
+</ul></li>
+<li><strong>Check for Multicollinearity</strong> (for Multiple Linear Regression):
+<ul>
+<li>Multicollinearity occurs when independent variables are highly correlated, which can affect the model’s stability and interpretability.</li>
+<li>Calculate the Variance Inflation Factor (VIF) for each independent variable. A VIF above 5-10 indicates high multicollinearity.</li>
+</ul></li>
+<li><strong>Assess Homoscedasticity</strong>:
+<ul>
+<li>The variance of the residuals should be constant across all levels of the independent variables.</li>
+<li>Plot residuals against fitted values and look for any patterns. Heteroscedasticity (non-constant variance) suggests that linear regression may not be suitable.</li>
+</ul></li>
+<li><strong>Check Independence of Residuals</strong>:
+<ul>
+<li>The residuals (errors) should be independent.</li>
+<li>For time series data, plot residuals over time to check for autocorrelation.</li>
+</ul></li>
+<li><strong>Consider the Sample Size</strong>:
+<ul>
+<li>Linear regression requires a sufficient sample size, especially for multiple linear regression with several independent variables.</li>
+<li>A general rule of thumb is having at least 20 observations per independent variable.</li>
+</ul></li>
+<li><strong>Evaluate Model Assumptions and Fit</strong>:
+<ul>
+<li>After fitting a linear regression model, assess the model assumptions (linearity, independence, homoscedasticity, normality of residuals) and overall model fit.</li>
+<li>Consider alternative models if the assumptions are violated and cannot be remedied with data transformations.</li>
+</ul></li>
+<li><strong>Domain Knowledge</strong>:</li>
+</ol>
+<ul>
+<li>Consider any domain-specific knowledge or theoretical framework that might indicate whether a linear relationship is plausible.</li>
+</ul>
+<p>If your dataset does not meet the assumptions or linear regression does not align with your research question, you may need to consider alternative modeling techniques such as polynomial regression, logistic regression, or non-parametric methods.</p>
+</div>
+</div>
+<p>This is a pretty reasonable summary of the basic issues a researcher might consider when deciding on whether to fit a linear regression model. The only thing I really disagree with is item (4): The distribution of the dependent (or the independent) variable is completely irrelevant to the assumptions of the model; the only reason you might worry about something like skewness is because outlying points might have high leverage, but I wouldn’t generally deal with that by transforming anything. If the original relationship was linear, it won’t be linear after transformation.</p>
+<p>There are also some minor points of contention, like how (5) describes multicolinearity as “when the dependent variables are highly correlated”. This isn’t strictly true; multicolinearity occurs when the predictors are linearly dependent, and can happen even when the correlation between any two predictors is very small. This isn’t a huge issue, and I’d wager that most introductory material on the internet frames multicolinearity in this way (which is probably why ChatGPT does as well). At least it recommends an approach based on the VIF rather than directly examining the covariance, but I could easily imagine a naive user reading this and choosing to diagnose multicolinearity by directly examining a correlation matrix.</p>
+<p>Item (6) says that, in the presence of heteroskedasticity, linear regression might not be suitable. I think this is a bit extreme: There are plenty of heteroskedasticity-robust approaches to doing inference; and if there is a reasonable model for the heteroskedasticity, then weighted least-squares is always an option. Let’s see what ChatGPT says:</p>
+<div class="callout callout-style-default callout-prompt no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Prompt
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>What are alternatives to linear regression when the residuals are heteroskedastic?</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-gptout no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+ChatGPT output
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Heteroskedasticity, the condition where the variance of the residuals is not constant across levels of an independent variable, can violate the assumptions of linear regression and potentially lead to incorrect conclusions. Here are some alternatives and remedies when facing heteroskedasticity:</p>
+<ol type="1">
+<li><p><strong>Transformation of Variables</strong>:</p>
+<ul>
+<li>Applying transformations like logarithmic, square root, or inverse can sometimes stabilize the variances.</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>log_y <span class="op">=</span> np.log(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Weighted Least Squares (WLS)</strong>:</p>
+<ul>
+<li>A variation of linear regression that weights each observation by the inverse of its variance.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>weights <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> np.var(X, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>wls_model <span class="op">=</span> sm.WLS(y, X, weights<span class="op">=</span>weights).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Generalized Least Squares (GLS)</strong>:</p>
+<ul>
+<li>An extension of WLS that allows for different correlations and variances among the observations.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gls_model <span class="op">=</span> sm.GLS(y, X).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Robust Standard Errors</strong>:</p>
+<ul>
+<li>Adjust the standard errors of the coefficients to account for heteroskedasticity without modifying the model itself.</li>
+</ul>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>robust_model <span class="op">=</span> sm.OLS(y, X).fit(cov_type<span class="op">=</span><span class="st">'HC3'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Heteroskedasticity-Robust Regression</strong>:</p>
+<ul>
+<li>Regression models that are robust to heteroskedasticity.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>robust_model <span class="op">=</span> sm.RLM(y, X).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Generalized Linear Models (GLM)</strong>:</p>
+<ul>
+<li>A flexible generalization of ordinary linear regression that allows for response variables with error distribution models other than a normal distribution.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>glm_model <span class="op">=</span> sm.GLM(y, X, family<span class="op">=</span>sm.families.Gaussian()).fit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Quantile Regression</strong>:</p>
+<ul>
+<li>Models the relationship between variables for different quantiles (percentiles) of the data, which can be useful when heteroskedasticity is present.</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>quantile_model <span class="op">=</span> smf.quantreg(<span class="st">'y ~ X'</span>, data).fit(q<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Breusch-Pagan Test or White Test</strong>:</p>
+<ul>
+<li>While not alternatives to linear regression, these tests can confirm the presence of heteroskedasticity, guiding you towards using one of the above methods.</li>
+</ul></li>
+</ol>
+<p>Each of these methods has its own assumptions and requirements, so it’s important to understand them fully before applying them to your data. The choice among them depends on the nature of your data and the specific research questions you are trying to answer.</p>
+</div>
+</div>
+<p>While a pretty good list, overall, I really dislike transformation being (1). Transformations (e.g.&nbsp;variance stabilizing transformations) are often presented as a first-choice solution, but applying them correctly is strongly problem dependent. They don’t only change the conditional variance, they change the functional relationship between the predictor and response, and as a result they can change the conditional distribution (i.e.&nbsp;the errors) is unexpected ways. Not to say that they aren’t useful, but they tend to be extremely problem dependent, in the sense that if you don’t know whether you should be transforming, you probably shouldn’t.</p>
+<p>Some of the other suggestions are a bit suspect. Quantile regression models, for instance, answer fundamentally different questions (i.e.&nbsp;conditional quantiles vs.&nbsp;the conditional mean), and the decision of which to use would generally be motivated by the research question rather than mere heteroskedasticity.</p>
+<p>Impressions:</p>
+<ul>
+<li><p>The level of detail is about on par with most introductory statistics and data science articles, textbooks, or medium blog posts you can find on the internet. It seems to provide a reasonably thorough summary of the most common information on the internet, which sometimes means that its responses are inconsistent or incorrect (just like information on the internet).</p></li>
+<li><p>As an example, it provides the very common and incorrect characterization of the Mann-Whitney as a test of medians. It also confuses the error and the residuals of a regression model, which is another common mistake in introductory articles and blog posts.</p></li>
+<li><p>It is occasionally inconsistent or incoherent in ways that would be hard to spot for someone who wasn’t already knowledgeable about the material. Its description of the Mann-Whitney test is a good example: At a surface level, it’s a well written and thorough description, and it takes careful reading to realize that it contradicts itself several times, and gives an inconsistent description of the actual hypothesis being tested.</p></li>
+</ul>
+<p><strong>Verdict</strong>: Technically, extremely impressive. Probably very useful for brainstorming analytical approaches for someone with a strong background. Probably a dangerous teacher for someone trying to learn.</p>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

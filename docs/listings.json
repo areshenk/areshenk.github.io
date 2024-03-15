@@ -1,0 +1,28 @@
+[
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/2024-01-11-quantum-brain-somethingorother/index.html",
+      "/posts/2023-09-26-chatgpt-stats-pt1/index.html",
+      "/posts/2019-05-26-spurious-dynamics/index.html",
+      "/posts/2019-01-16-more-spurious-modular-structure/index.html",
+      "/posts/2018-12-10-spurious-modular-structure/index.html",
+      "/posts/2018-09-09-in-a-room-sit-three-textbooks/index.html",
+      "/posts/2018-02-18-cargo-cult-statistics/index.html"
+    ]
+  },
+  {
+    "listing": "/research.html",
+    "items": [
+      "/research/motcont.html",
+      "/research/funcon.html"
+    ]
+  },
+  {
+    "listing": "/packages.html",
+    "items": [
+      "/packages/MSMVSampEn.html",
+      "/packages/spdm.html"
+    ]
+  }
+]

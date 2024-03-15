@@ -1,0 +1,26 @@
+/*-- scss:defaults --*/
+$border-color-input: #A5DD9B !default;
+$background-color-input: #C5EBAA !default;
+$icon-input: '../icons/callout-block-input.svg' !default;
+
+/*-- scss:rules --*/
+div.callout-input.callout {
+  border-left-color: $border-color-input;
+}
+
+div.callout-tweet.callout-style-default>.callout-header {
+  background-color: $background-color-input;
+}
+
+.callout-tweet.icon .callout-icon {
+  display: unset !important;
+}
+
+div.callout-tweet.icon.callout-captioned .callout-icon::before {
+  background-image: $icon;
+}
+
+.callout-tweet.icon.callout-style-default div.callout-icon-container {
+  padding-top: 0.1em;
+  padding-right: 0.35em;
+}

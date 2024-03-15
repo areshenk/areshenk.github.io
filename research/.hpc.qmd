@@ -1,0 +1,5 @@
+---
+title: Prefrontal-hippocampal interactions during learning
+description: When learning a novel task, the brain must construct a high-level model of the underlying state-space, and of causal relationships between stimuli. There is considerable evidence that the hippocampus maintains a cognitive map of these relationships, and coordinates with prefrontal cortex in 
+image: "../files/images/research/fig_hpc.svg"
+---

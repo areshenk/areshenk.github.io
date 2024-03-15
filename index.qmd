@@ -1,0 +1,26 @@
+---
+title: "Corson N. Areshenkoff"
+about:
+  template: solana
+  image: files/images/selfie.jpg
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/areshenk
+---
+
+I am a researcher at the Centre for Neuroscience Studies at Queens University, working in the Memory, Action, and Perception Lab under Dr. Jason Gallivan. My background is in statistics and mathematics, and I typically enjoy projects that lend themselves to interesting or unusual analyses. Although I've dabbled in many areas, my general focus is on the use of functional neuroimaging methods to study brain networks supporting motor learning processes.
+
+### Education
+
+PhD Psychology, Queens University, 2023
+
+:   **Thesis**: Taking the 'motor' out of motor learning: The role of cognitive brain networks and explicit processes in sensorimotor adaptation.
+
+MSc Psychology, University of Victoria, 2016
+
+:   **Thesis**: Task-dependent motor representations evoked by spatial words
+
+BSc Mathematics, University of Victoria, 2015
+
+:   

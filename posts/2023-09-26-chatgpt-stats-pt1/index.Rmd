@@ -1,0 +1,319 @@
+---
+title: 'ChatGPT experiment log pt. 1: Learning basic statistics'
+author: Corson N. Areshenkoff
+date: '2023-09-26'
+slug: chatgpt-bad-I
+categories: []
+tags: []
+description: ''
+---
+
+```{r opts, echo = FALSE}
+knitr::opts_chunk$set(
+  fig.path = "img/"
+)
+```
+
+It has to be good for something, right? I thought it would be fun to experiment with some tasks for which ChatGPT is widely used in data science; or, at least, for which I've seen it used by students in data science / statistics chatrooms and forums. One of the most common -- and for which examples can be found everywhere beginning data scientists congregate -- is the use of ChatGPT to design an analysis, answer questions about statistics, or more generally to provide *knowledge*.
+
+One of the major difficulties in evaluating resources like ChatGPT as a teacher is that 1) Without already having detailed technical knowledge, it's hard to evaluate the accuracy of its output, and 2) *With* detailed knowledge and experience, it's too easy to (unconsciously) fill in the gaps in ChatGPT's output, or to interpret the output correctly in a way that a novice would probably not. Here's a simple example of the kind of use I've seen recommended to novices trying to pick up on the basics of data analysis:
+
+::: callout-prompt
+How do I analyze two continuous variables?
+:::
+
+This question is more than a bit ill-posed, as I haven't actually explained anything about the nature of the data, or the specific research question
+
+::: callout-gptout
+Analyzing two continuous variables typically involves examining the relationship between them. Here are the common methods to analyze two continuous variables:
+
+1.  **Descriptive Statistics**:
+    -   Calculate the mean, median, mode, standard deviation, and range for each variable.
+    -   This gives a sense of the central tendency and spread of each variable.
+2.  **Graphical Analysis**:
+    -   **Scatter Plot**: Plot one variable against the other to visually inspect the relationship.
+    -   **Histograms**: For each variable, to see the distribution.
+    -   **Box Plots**: For each variable, to visualize the central tendency and spread, as well as any outliers.
+3.  **Correlation Analysis**:
+    -   **Pearson's Correlation Coefficient (r)**: Measures the strength and direction of a linear relationship between two variables. The value ranges between -1 and 1. A value close to 1 implies a strong positive correlation, a value close to -1 implies a strong negative correlation, and a value close to 0 implies no correlation.
+    -   **Spearman's Rank Correlation**: Used when the relationship is not linear or the data is not normally distributed.
+4.  **Regression Analysis**:
+    -   **Simple Linear Regression**: If you suspect one variable might predict another, you can fit a linear regression model. This gives an equation of the form $y = mx + c$, where $y$ is the dependent variable, $x$ is the independent variable, $m$ is the slope, and $c$ is the y-intercept.
+    -   **Multiple Regression**: If there are other variables that might influence the relationship, you can include them in a multiple regression analysis.
+5.  **Non-parametric Tests**:
+    -   If the data doesn't meet the assumptions of normality, you might consider non-parametric tests like the Mann-Whitney U test or the Kruskal-Wallis test.
+6.  **Residual Analysis**:
+    -   After fitting a regression model, it's important to check the residuals (the differences between observed and predicted values) to ensure that the assumptions of the model are met.
+7.  **Covariance Analysis**:
+    -   Covariance measures the joint variability of two random variables. If the greater values of one variable mainly correspond with the greater values of the other variable, and the same holds for the lesser values, the covariance is positive.
+8.  **Cross-tabulation and Chi-square Test**:
+    -   Although typically used for categorical data, continuous data can be binned into categories, and a chi-square test can be used to determine if there's a significant association between the two variables.
+
+When analyzing two continuous variables, it's crucial to consider the context and the nature of the data. Not all methods will be appropriate for all datasets, and sometimes domain knowledge will guide the choice of analysis.
+:::
+
+This is actually a fairly reasonable survey of the most common approaches to plotting, summarizing, or quantifying the association between two continuous variables. The boilerplate text at the bottom of the output is reasonable, too, since I haven't actually explained anything about the goals of the analysis. Someone with little knowledge of basic statistics could actually get a useful sense of how to proceed with their analysis. For example, if I were interested in using one of the variables to predict the other, the output clearly suggests that something like a simple linear regression model, or the correlation/covariance, would be useful.
+
+Unfortunately, many of the specific details -- and some of the overall organization -- is/are nonsense, and are nonsense in ways that would very possibly lead a novice to make nonsensical decisions. Examples:
+
+1.  ChatGPT describes the Spearman correlation as being used "*when the relationship is not linear or the data is not normally distributed*". The first part is true: the Spearman correlation quantifies general monotonic relationships, but the second part is nonsense. Nothing about the *interpretation* of the Pearson correlation requires normality, and most *tests* of the Pearson correlation do not assume normality of any individual variable. The standard t-test for the correlation assumes only that the errors are normal when one variable is regressed on the other. If you're not willing to assume any kind of normality at all, then you can just use a permutation test. The decision as to which measure to use is dictated by the kinds of relationship the user is trying to quantify, not any distributional assumptions.
+
+2.  That the chi-squared test can be used when "*continuous data \[are\] binned into categories \[...\] to determine if there's a significant association between the two variables*". This is strictly true, but is essentially always a terrible idea. It is nearly always less powerful than a model actually adapted to continuous data, and the association that it is testing for (i.e. general non-independence) rarely answers the question most people actually have about multiple continuous variables. All in all, just a useless suggestion.
+
+3.  "*If the data doesn't meet the assumptions of normality, you might consider non-parametric tests like the Mann-Whitney U test or the Kruskal-Wallis test.*". This is a bizarre suggestion, since the MW and KW are not "alternatives" to any other technique on the list. That is, there is nothing at all on the list that a) assumes normality, and b) could be replaced with either of these tests in a way that actually answers the same research question.
+
+Number (1) is a very common misconception in introductory statistics and data science course materials, and in articles on platforms like medium, and so it seems likely that ChatGPT is just regurgitating common misinformation. The same is true of (3), where the MW and KW are often presented as "non-parametric alternatives" to the t-test, even though they test completely different hypotheses (stochastic equality vs. mean equality). Often -- as in this ChatGPT output -- the claim is that these tests should be used instead of the t-test when the data are non-normal, even though there are other alternatives (like permutation tests) which do not assume normality and actually answer the same question.
+
+Number (3) also lacks context; the MW/KW are recommended "when the data are non-normal", but it's not explained what they're supposed to be replacing, and none of the other procedures actually outlined by ChatGPT assume or require normality of any of the observed variables (only linear regression typically assumes normality of the *errors*). I think this is just an example of ChatGPT being skilled at generating text it has seen before, but not in generating output with a coherent/ logical organization. Something like this could easily lead someone to plot a few of their variables, note that they don't look normal, and choose one of these tests even though another procedure might be perfectly appropriate, and might more directly address their actual research question.
+
+Speaking of the Mann-Whitney:
+
+::: callout-prompt
+When should I use the Mann-Whitney test?
+:::
+
+::: callout-gptout
+The Mann-Whitney U test, also known as the Wilcoxon rank-sum test, is a non-parametric statistical test used to determine if there are differences between two independent groups on a continuous or ordinal variable. Here are the situations when you should consider using the Mann-Whitney U test:
+
+\[...\]
+
+4.  **Comparing Central Tendencies**:
+    -   The Mann-Whitney U test compares the medians of two groups rather than the means. It tests the null hypothesis that the probability of observing a randomly selected value from the first group that is larger than a randomly selected value from the second group is equal to 0.5.
+
+\[...\]
+
+7.  **Assumption of Similar Shapes**:
+    -   For the Mann-Whitney U test to be a test of medians, the distributions of the two groups should have the same shape. If the shapes are different, the test is more of a test of stochastic dominance (i.e., the likelihood that a randomly selected value from one distribution will be greater than a randomly selected value from the other distribution).
+
+In summary, the Mann-Whitney U test is a versatile non-parametric test suitable for comparing two independent groups when the assumptions of parametric tests (like the t-test) are not met. However, as with all statistical tests, it's essential to understand its assumptions and limitations before using it.
+:::
+
+That's pretty reasonable. I was expecting the incorrect information (which is actually provided in 4.) that the MW is a test of medians (which is very commonly reported in introductory textbooks and online material), but then the output corrects itself in (7) and reports that it is only a test of medians when the alternative is a pure location shift. Minor nitpick: "Likelihood" is the wrong word here. "Probability" is correct. But so what? ChatGPT is just being colloquial.
+
+It is interesting, though, that ChatGPT provides both the wrong and the right answer in the same output. It also gives the correct definition of stochastic equality in (4) -- this is the actual null hypothesis -- but claims in the same breath that the MW is a test of medians. This is a good example of ChatGPT stringing together realistic sounding output, but not being able to reason about the technical meaning of its words.
+
+::: callout-prompt
+Can you give me a simple description of linear regression?
+:::
+
+::: callout-gptout
+Certainly!
+
+**Linear Regression** is a statistical method that models the relationship between a dependent variable and one or more independent variables by fitting a linear equation to the observed data. The simplest form of linear regression, with one dependent and one independent variable, is represented by the equation:
+
+$$ y = \beta_0 + \beta_1x + \epsilon $$
+
+Where:
+
+-   $y$ is the dependent variable (what we're trying to predict).
+-   $x$ is the independent variable (the input).
+-   $\beta_0$ is the y-intercept (value of $y$ when $x$ is 0).
+-   $\beta_1$ is the slope of the line (how much $y$ changes for a unit change in $x$).
+-   $\epsilon$ represents the error term (the difference between the observed and predicted values).
+
+The primary goal of linear regression is to find the best-fitting straight line that accurately predicts the output values within a range.
+:::
+
+Not bad. ChatGPT gives the wrong definition of the error term (what it describes is actually the residuals), but the overall explanation is pretty clear and intuitive. This sounds more or less like what we want. So how do I actually perform a regression analysis?
+
+::: callout-prompt
+How do I use linear regression to predict one variable using another?
+:::
+
+::: callout-gptout
+Using linear regression to predict one variable using another involves establishing a linear relationship between the two variables. Here's a step-by-step guide using Python with the `statsmodels` and `matplotlib` libraries:
+
+1.  **Import Necessary Libraries**:
+
+``` python
+import numpy as np
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+```
+
+2.  **Prepare the Data**: Assuming you have two lists or arrays, `X` (independent variable) and `y` (dependent variable):
+
+``` python
+# Sample data
+X = [1, 2, 3, 4, 5]
+y = [2, 4, 5, 4, 5]
+```
+
+3.  **Add a Constant to the Independent Variable**: This step is necessary to include an intercept in the regression model.
+
+``` python
+X = sm.add_constant(X)
+```
+
+4.  **Fit the Linear Regression Model**:
+
+``` python
+model = sm.OLS(y, X).fit()
+```
+
+5.  **Print the Summary**: This will give you details about the regression, including coefficients, R-squared value, p-values, etc.
+
+``` python
+print(model.summary())
+```
+
+6.  **Make Predictions**: You can use the fitted model to make predictions for new values of the independent variable.
+
+``` python
+new_X = [[1, 6]]  # Predicting y for X=6
+predicted_y = model.predict(new_X)
+print(f"Predicted value of y for X=6 is {predicted_y[0]}")
+```
+
+7.  **Visualize the Regression Line**:
+
+``` python
+plt.scatter(X[:, 1], y, color='blue', label='Data Points')
+plt.plot(X[:, 1], model.predict(X), color='red', label='Regression Line')
+plt.xlabel('X')
+plt.ylabel('y')
+plt.title('Linear Regression')
+plt.legend()
+plt.show()
+```
+
+This will plot the data points and the regression line, helping you visualize the linear relationship between the two variables.
+
+Remember to install the required libraries (`statsmodels` and `matplotlib`) before running the code. This example demonstrates simple linear regression with one independent variable. If you have multiple independent variables, the process remains largely the same, but you'll need to adjust the data preparation and visualization steps accordingly.
+:::
+
+This is pretty spectacular, honestly. If you know enough to validate the model output (to ensure that the code is running correctly), then this would be a fantastic way for someone already proficient in statistics, and comfortable with a language like R, to learn statistical programming in Python. But suppose we weren't already knowledgeable, and we wanted to know more about whether this model is reasonable at all.
+
+::: callout-prompt
+How do I know if linear regression is right for my dataset?
+:::
+
+::: callout-gptout
+Determining whether linear regression is appropriate for your dataset involves checking several conditions and considering the nature of your data and research question. Here are some steps to help you decide:
+
+1.  **Define the Research Question**:
+    -   Linear regression is suitable for understanding the relationship between one dependent (response) variable and one or more independent (predictor) variables. Ensure your research question aligns with this.
+2.  **Visualize the Data**:
+    -   Create scatter plots of the dependent variable against each independent variable.
+    -   Look for a linear trend in the scatter plots. If the relationship appears non-linear, a linear model may not be the best choice.
+3.  **Check Linearity Assumption**:
+    -   Linear regression assumes a linear relationship between the dependent and independent variables.
+    -   If the relationship is inherently non-linear, consider transforming the variables or using non-linear regression models.
+4.  **Examine the Distribution of the Dependent Variable**:
+    -   While linear regression does not require the dependent variable to be normally distributed, extreme skewness or outliers can impact the model. Consider data transformations if necessary.
+5.  **Check for Multicollinearity** (for Multiple Linear Regression):
+    -   Multicollinearity occurs when independent variables are highly correlated, which can affect the model's stability and interpretability.
+    -   Calculate the Variance Inflation Factor (VIF) for each independent variable. A VIF above 5-10 indicates high multicollinearity.
+6.  **Assess Homoscedasticity**:
+    -   The variance of the residuals should be constant across all levels of the independent variables.
+    -   Plot residuals against fitted values and look for any patterns. Heteroscedasticity (non-constant variance) suggests that linear regression may not be suitable.
+7.  **Check Independence of Residuals**:
+    -   The residuals (errors) should be independent.
+    -   For time series data, plot residuals over time to check for autocorrelation.
+8.  **Consider the Sample Size**:
+    -   Linear regression requires a sufficient sample size, especially for multiple linear regression with several independent variables.
+    -   A general rule of thumb is having at least 20 observations per independent variable.
+9.  **Evaluate Model Assumptions and Fit**:
+    -   After fitting a linear regression model, assess the model assumptions (linearity, independence, homoscedasticity, normality of residuals) and overall model fit.
+    -   Consider alternative models if the assumptions are violated and cannot be remedied with data transformations.
+10. **Domain Knowledge**:
+
+-   Consider any domain-specific knowledge or theoretical framework that might indicate whether a linear relationship is plausible.
+
+If your dataset does not meet the assumptions or linear regression does not align with your research question, you may need to consider alternative modeling techniques such as polynomial regression, logistic regression, or non-parametric methods.
+:::
+
+This is a pretty reasonable summary of the basic issues a researcher might consider when deciding on whether to fit a linear regression model. The only thing I really disagree with is item (4): The distribution of the dependent (or the independent) variable is completely irrelevant to the assumptions of the model; the only reason you might worry about something like skewness is because outlying points might have high leverage, but I wouldn't generally deal with that by transforming anything. If the original relationship was linear, it won't be linear after transformation.
+
+There are also some minor points of contention, like how (5) describes multicolinearity as "when the dependent variables are highly correlated". This isn't strictly true; multicolinearity occurs when the predictors are linearly dependent, and can happen even when the correlation between any two predictors is very small. This isn't a huge issue, and I'd wager that most introductory material on the internet frames multicolinearity in this way (which is probably why ChatGPT does as well). At least it recommends an approach based on the VIF rather than directly examining the covariance, but I could easily imagine a naive user reading this and choosing to diagnose multicolinearity by directly examining a correlation matrix.
+
+Item (6) says that, in the presence of heteroskedasticity, linear regression might not be suitable. I think this is a bit extreme: There are plenty of heteroskedasticity-robust approaches to doing inference; and if there is a reasonable model for the heteroskedasticity, then weighted least-squares is always an option. Let's see what ChatGPT says:
+
+::: callout-prompt
+What are alternatives to linear regression when the residuals are heteroskedastic?
+:::
+
+::: callout-gptout
+Heteroskedasticity, the condition where the variance of the residuals is not constant across levels of an independent variable, can violate the assumptions of linear regression and potentially lead to incorrect conclusions. Here are some alternatives and remedies when facing heteroskedasticity:
+
+1.  **Transformation of Variables**:
+
+    -   Applying transformations like logarithmic, square root, or inverse can sometimes stabilize the variances.
+
+    ``` python
+    import numpy as np
+    log_y = np.log(y)
+    ```
+
+2.  **Weighted Least Squares (WLS)**:
+
+    -   A variation of linear regression that weights each observation by the inverse of its variance.
+
+    ``` python
+    import statsmodels.api as sm
+    weights = 1 / np.var(X, axis=0)
+    wls_model = sm.WLS(y, X, weights=weights).fit()
+    ```
+
+3.  **Generalized Least Squares (GLS)**:
+
+    -   An extension of WLS that allows for different correlations and variances among the observations.
+
+    ``` python
+    gls_model = sm.GLS(y, X).fit()
+    ```
+
+4.  **Robust Standard Errors**:
+
+    -   Adjust the standard errors of the coefficients to account for heteroskedasticity without modifying the model itself.
+
+    ``` python
+    robust_model = sm.OLS(y, X).fit(cov_type='HC3')
+    ```
+
+5.  **Heteroskedasticity-Robust Regression**:
+
+    -   Regression models that are robust to heteroskedasticity.
+
+    ``` python
+    robust_model = sm.RLM(y, X).fit()
+    ```
+
+6.  **Generalized Linear Models (GLM)**:
+
+    -   A flexible generalization of ordinary linear regression that allows for response variables with error distribution models other than a normal distribution.
+
+    ``` python
+    import statsmodels.api as sm
+    glm_model = sm.GLM(y, X, family=sm.families.Gaussian()).fit()
+    ```
+
+7.  **Quantile Regression**:
+
+    -   Models the relationship between variables for different quantiles (percentiles) of the data, which can be useful when heteroskedasticity is present.
+
+    ``` python
+    import statsmodels.formula.api as smf
+    quantile_model = smf.quantreg('y ~ X', data).fit(q=0.5)
+    ```
+
+8.  **Breusch-Pagan Test or White Test**:
+
+    -   While not alternatives to linear regression, these tests can confirm the presence of heteroskedasticity, guiding you towards using one of the above methods.
+
+Each of these methods has its own assumptions and requirements, so it's important to understand them fully before applying them to your data. The choice among them depends on the nature of your data and the specific research questions you are trying to answer.
+:::
+
+While a pretty good list, overall, I really dislike transformation being (1). Transformations (e.g. variance stabilizing transformations) are often presented as a first-choice solution, but applying them correctly is strongly problem dependent. They don't only change the conditional variance, they change the functional relationship between the predictor and response, and as a result they can change the conditional distribution (i.e. the errors) is unexpected ways. Not to say that they aren't useful, but they tend to be extremely problem dependent, in the sense that if you don't know whether you should be transforming, you probably shouldn't.
+
+Some of the other suggestions are a bit suspect. Quantile regression models, for instance, answer fundamentally different questions (i.e. conditional quantiles vs. the conditional mean), and the decision of which to use would generally be motivated by the research question rather than mere heteroskedasticity.
+
+Impressions:
+
+-   The level of detail is about on par with most introductory statistics and data science articles, textbooks, or medium blog posts you can find on the internet. It seems to provide a reasonably thorough summary of the most common information on the internet, which sometimes means that its responses are inconsistent or incorrect (just like information on the internet).
+
+-   As an example, it provides the very common and incorrect characterization of the Mann-Whitney as a test of medians. It also confuses the error and the residuals of a regression model, which is another common mistake in introductory articles and blog posts.
+
+-   It is occasionally inconsistent or incoherent in ways that would be hard to spot for someone who wasn't already knowledgeable about the material. Its description of the Mann-Whitney test is a good example: At a surface level, it's a well written and thorough description, and it takes careful reading to realize that it contradicts itself several times, and gives an inconsistent description of the actual hypothesis being tested.
+
+**Verdict**: Technically, extremely impressive. Probably very useful for brainstorming analytical approaches for someone with a strong background. Probably a dangerous teacher for someone trying to learn.

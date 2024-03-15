@@ -1,0 +1,23 @@
+/*-- scss:defaults --*/
+
+div.callout-prompt {
+  border-color: #A5DD9B !important;
+}
+div.callout-prompt .callout-header {
+  background-color: #C5EBAA !important;
+  background-repeat: no-repeat;
+  text-indent: 4%;
+  background-image: url('files/icons/callout-icon-input.svg');
+  background-position: 1% 50%;
+}
+
+div.callout-gptout {
+  border-color: #FF8989 !important;
+}
+div.callout-gptout .callout-header {
+  background-color: #FCAEAE !important;
+  background-repeat: no-repeat;
+  text-indent: 4%;
+  background-image: url('files/icons/callout-icon-output.svg');
+  background-position: 1% 50%;
+}

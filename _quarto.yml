@@ -1,0 +1,30 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "areshenkBlog"
+  navbar:
+    left:
+      - research.qmd
+      - posts.qmd
+      - packages.qmd
+      - publications.qmd
+    right: 
+      - icon: github
+        href: https://github.com/areshenk
+        aria-label: GitHub
+format:
+  html:
+    theme: 
+        - files/formatting/lux_custom.scss
+        - files/formatting/callout-boxes.css
+    css: styles.css
+    toc: false
+    backgroundcolor: "#FFFFFF"
+    callout-icon: true
+    filters: 
+        - files/formatting/custom-callouts.lua
+
+editor: visual
+

@@ -1,0 +1,20 @@
+div.callout-prompt.callout {
+  border-color: #A5DD9B;
+}
+
+div.callout-prompt.callout-style-default>.callout-header {
+  background-color: #C5EBAA;
+}
+
+div.callout-solution.icon .callout-icon {
+  display: unset;
+}
+
+div.callout-prompt.icon.callout-captioned .callout-icon::before {
+  background-image: url('files/icons/callout-icon-input.svg');
+}
+
+.callout-prompt.icon.callout-style-default div.callout-icon-container {
+  padding-top: 0.1em;
+  padding-right: 1.35em;
+}

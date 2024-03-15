@@ -1,0 +1,7 @@
+---
+title: "Software"
+listing: 
+  type: grid
+  contents: packages
+  fields: [image, title, description]
+---

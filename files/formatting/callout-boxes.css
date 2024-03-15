@@ -1,0 +1,34 @@
+/*-- scss:defaults --*/
+
+div.callout-prompt {
+  border-color: #A5DD9B !important;
+}
+div.callout-prompt .callout-header {
+  background-color: #C5EBAA !important;
+  background-repeat: no-repeat;
+  text-indent: 25px;
+  background-image: url('files/icons/callout-icon-input.svg');
+  background-position: 5px 50%;
+}
+
+div.callout-gptout {
+  border-color: #FF8989 !important;
+}
+div.callout-gptout .callout-header {
+  background-color: #FCAEAE !important;
+  background-repeat: no-repeat;
+  text-indent: 25px;
+  background-image: url('files/icons/callout-icon-output.svg');
+  background-position: 5px 50%;
+}
+
+div.callout-theory {
+  border-color: #168aad !important;
+}
+div.callout-theory .callout-header {
+  background-color: #99d98c !important;
+  background-repeat: no-repeat;
+  text-indent: 25px;
+  background-image: url('files/icons/callout-icon-theory.svg');
+  background-position: 5px 50%;
+}

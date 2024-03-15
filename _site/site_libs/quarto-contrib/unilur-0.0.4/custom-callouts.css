@@ -1,0 +1,11 @@
+div.callout-input.callout {
+  border-left-color: #A50000;
+}
+
+div.callout-input.callout-style-default>.callout-header {
+  background-color: #C5EBAA;
+}
+
+div.callout-input.icon .callout-icon {
+  display: url('files/icons/callout-icon-input.svg');
+}

@@ -1,0 +1,7 @@
+div.callout-prompt.callout {
+  border-color: #A5DD9B;
+}
+
+div.callout-prompt.callout-style-default>.callout-header {
+  background-color: #C5EBAA;
+}

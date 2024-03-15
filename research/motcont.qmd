@@ -1,0 +1,5 @@
+---
+title: Cognitive contributions to motor control
+description: When acting in an uncertain environment, or when the action needed to achieve a goal is unknown, cognitive structures in the brain are engaged to analyze and decipher the problem's structure, and dictate the parameters that the motor system uses to program the needed action. These processes are especially important in the early stages of learning, before the appropriate action has been decided upon, and the motor system can take over the process of adaptation. Most of my work uses neuroimaging methods to study functional interactions between motor and non-motor structures during this early stage of learning.
+image: "../files/images/research/fig_motor.svg"
+---

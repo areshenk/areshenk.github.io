@@ -1,0 +1,33 @@
+.input-p::before {
+  counter-increment: input; 
+  content: "Input "; 
+}
+.input-p[data-label]::before {
+  font-weight: bold;
+  content: "ChatGPT Input";
+}
+
+.input-p  {
+  padding: 1em;
+  background: #eff5ed;
+  color: black;
+  border: 2px solid #8abf78;
+  border-radius: 20px;
+}
+
+.output-p::before {
+  counter-increment: output; 
+  content: "Output "; 
+}
+.output-p[data-label]::before {
+  font-weight: bold;
+  content: "ChatGPT Output";
+}
+
+.output-p  {
+  padding: 1em;
+  background: #f5edf5;
+  color: black;
+  border: 2px solid #a352a3;
+  border-radius: 20px;
+}
