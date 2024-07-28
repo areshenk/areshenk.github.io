@@ -67,7 +67,7 @@
     "href": "packages.html",
     "title": "Software",
     "section": "",
-    "text": "MSMVSampEn\n\n\nMultiscale, multivariate sample entropy in R\n\n\n\n\n\n\n\n\n\n\n\n\n\nspdm\n\n\nSymmetric, positive-definite matrices in R\n\n\n\n\n\n\n\nNo matching items"
+    "text": "MSMVSampEn\n\n\nMultiscale, multivariate sample entropy in R\n\n\n\n\n\n\n\n\n\n\n\n\n\niowa\n\n\nModular RL models of the Iowa gambling task\n\n\n\n\n\n\n\n\n\n\n\n\n\nspdm\n\n\nSymmetric, positive-definite matrices in R\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2018-02-18-cargo-cult-statistics/index.html",
@@ -96,5 +96,12 @@
     "title": "Corson N. Areshenkoff",
     "section": "",
     "text": "I am a researcher at the Centre for Neuroscience Studies at Queens University, working in the Memory, Action, and Perception Lab under Dr. Jason Gallivan. My background is in statistics and mathematics, and I typically enjoy projects that lend themselves to interesting or unusual analyses. Although I’ve dabbled in many areas, my general focus is on the use of functional neuroimaging methods to study brain networks supporting motor learning processes.\n\nEducation\n\nPhD Psychology, Queens University, 2023\n\nThesis: Taking the ‘motor’ out of motor learning: The role of cognitive brain networks and explicit processes in sensorimotor adaptation.\n\nMSc Psychology, University of Victoria, 2016\n\nThesis: Task-dependent motor representations evoked by spatial words\n\nBSc Mathematics, University of Victoria, 2015"
+  },
+  {
+    "objectID": "packages/iowa.html",
+    "href": "packages/iowa.html",
+    "title": "iowa",
+    "section": "",
+    "text": "The iowa package implements modular reinforcement learning models of the Iowa gambling task, using RStan as a backend.\nThe package allows both the simulation and fitting of models constructed by mixing and matching various utility, updating, and temperature functions; and is designed to be relatively extensible by allowing users to implement custom model components and deck structures, which may then be used relatively seamlessly with the functions already implemented in the package.\nIn addition to simulating the performance of custom models, iowa also allows model fitting either by maximum likelihood / maximum a posteriori estimation, or by full posterior sampling. Currently, only single subject fitting is supported, but implementing support for full hierarchical Bayesian fitting is a strong priority.\nFor more information, see the documentation.\n\nInstallation\niowa can be installed from GitHub with using install_git() from the devtools package using the command below:\ndevtools::install_git('areshenk-rpackages/iowa')"
   }
 ]
