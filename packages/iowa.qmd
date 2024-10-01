@@ -5,7 +5,15 @@ date: "2024-07-23"
 image: "../files/images/packages/iowa-hex.png"
 ---
 
+<<<<<<< HEAD
+<p align="center">
+  <a href="https://github.com/areshenk-rpackages/iowa"><img src="giticon.png" alt="Github" style="width:64px;height:64px;"></a>
+</p>
+
+The **iowa** package implements modular reinforcement learning models of the Iowa gambling task, using RStan as a backend.
+=======
 The **iowa** package implements modular reinforcement learning models of the Iowa gambling task, using cmdstan as a backend.
+>>>>>>> fa03d424f88ad4428309084ab1405b45039b297a
 
 The package allows both the simulation and fitting of models constructed by mixing and matching various utility, updating, and temperature functions; and is designed to be relatively extensible by allowing users to implement custom model components and deck structures, which may then be used relatively seamlessly with the functions already implemented in the package.
 
