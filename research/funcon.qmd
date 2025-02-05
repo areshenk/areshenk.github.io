@@ -1,5 +1,5 @@
 ---
-title: Methods for analyzing fMRI functional connectivity
+title: 3. Methods for analyzing fMRI functional connectivity
 description: The analysis of fMRI functional connectivity typically involves the analysis of very high-dimensional covariance matrices, encoding the BOLD signal covariance between brain regions or voxels. The most popular of these approaches, which I've used extensively in my imaging work, takes advantage of the Riemannian-manifold structure of the space of covariance matrices. 
 image: "../files/images/research/fig_funcon.svg"
 ---

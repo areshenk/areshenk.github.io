@@ -14,6 +14,7 @@
   {
     "listing": "/research.html",
     "items": [
+      "/research/learning.html",
       "/research/motcont.html",
       "/research/funcon.html"
     ]

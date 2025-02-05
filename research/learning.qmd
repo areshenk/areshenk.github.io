@@ -1,0 +1,5 @@
+---
+title: 1. Strategy use and structure learning
+description: Subjects in many task show evidence of abrupt changes in behavior consistent with a sudden change in strategy. In many cases, these strategies clearly leverage subjects' understanding of some statistical or structural regularity in the task, and so must involve some learning of the underlying task structure. There is a large body of evidence linking this kind of learning to prefrontal-hippocampal circuitry, which forms and updates a cognitive map of this structure. We have some evidence linking this .
+image: "../files/images/research/fig_hpc.svg"
+---

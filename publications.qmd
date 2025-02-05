@@ -17,10 +17,10 @@ citeproc: false
 ### Preprints
 
 -   [@areshenkoff2024individual]
--   [@areshenkoff2023distinct]
 
 ### Publications
 
+-   [@areshenkoff2024distinct]
 -   [@nick2023reconfigurations]
 -   [@brien2023classification]
 -   [@standage2023whole]
