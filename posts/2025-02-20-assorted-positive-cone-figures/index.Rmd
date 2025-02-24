@@ -1,0 +1,25 @@
+---
+title: 'Visualizing the cone of symmetric, positive-definite matrices'
+author: Corson N. Areshenkoff
+date: '2025-02-20'
+slug: positive-cone
+categories: []
+tags: []
+description: ''
+freeze: true
+---
+
+```{r opts, echo = FALSE, message=FALSE}
+library(kableExtra)
+knitr::opts_chunk$set(
+  fig.path = "img/"
+)
+library(ggplot2)
+library(plotly)
+mar <- c(2,2,2,2)
+figs <- readRDS('data/figs.rds')
+```
+
+```{r, echo=F}
+figs[[1]]
+```
